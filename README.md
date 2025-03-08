@@ -254,7 +254,7 @@ There are bits of idiomatic Zig in the library in the form of allocators as para
 - [Qt's Meta-Object system](https://doc.qt.io/qt-6/metaobjects.html)
 - [Qt widgets](https://doc.qt.io/qt-6/examples-widgets.html)
 
-The `QByteArray`, `QString`, `QList<T>`, `QVector<T>`, `QMap<K,V>`, `QHash<K,V>` types are projected as plain Zig types: `[]u8`, `[]const u8`, `[]T`, `AutoHashMap[K]V`, and `StringHashMap[V]`. Therefore, it is not possible to call any of the Qt type's methods and some Zig equivalent method must be used instead. (The raw C ABI is also available due to the headers being required to define Qt types in Zig, but it is not recommended for use beyond Qt class type definitions where needed.) This library was constructed with the goal of enabling single-language application development. Anything beyond that boundary is up to the developer to implement.
+The `QByteArray`, `QString`, `QList<T>`, `QVector<T>`, `QMap<K,V>`, `QHash<K,V>` types are projected as plain Zig types: `[]u8`, `[]const u8`, `[]T`, `AutoHashMapUnmanaged[K]V`, and `StringHashMapUnmanaged[V]`. Therefore, it is not possible to call any of the Qt type's methods and some Zig equivalent method must be used instead. (The raw C ABI is also available due to the headers being required to define Qt types in Zig, but it is not recommended for use beyond Qt class type definitions where needed.) This library was constructed with the goal of enabling single-language application development. Anything beyond that boundary is up to the developer to implement.
 
 - Zig string types are internally converted to `QString` using `QString::fromUtf8`. Therefore, the Zig string input must be UTF-8 to avoid [mojibake](https://en.wikipedia.org/wiki/Mojibake). If the Zig input string contains binary data, the conversion would corrupt such bytes into U+FFFD (�). On return to Zig space, this becomes `\xEF\xBF\xBD`.
 
@@ -268,7 +268,7 @@ The `connect(targetObject, targetSlot)` methods are projected as `On(targetObjec
 
 - You can also override virtual methods like `PaintEvent` in the same way. Where supported, there are additional `On` and `QBase` variants:
   - `OnPaintEvent`: Set an override callback function to be called when `PaintEvent` is invoked. For certain methods, even with the override set, the base class implementation can still be called by Qt internally and these calls can not be prevented.
-  - `QBaseOnPaintEvent`: Invoke the base class implementation of `PaintEvent`. This is useful for when the custom implementation requires the base class implementation. (When there is no override set, the `QBase` implementation is equivalent to `PaintEvent`.)
+  - `QBasePaintEvent`: Invoke the base class implementation of `PaintEvent`. This is useful for when the custom implementation requires the base class implementation. (When there is no override set, the `QBase` implementation is equivalent to `PaintEvent`.)
 
 Qt class inherited types are projected via opaque pointers and `@ptrCast` in Zig. For example, to pass a `var myLabel: ?*QLabel` to a function taking only the `?*QWidget` base class, it should be sufficient to pass `myLabel` and the library will automatically cast it to the correct type and Qt vtable reference.
 
