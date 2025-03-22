@@ -1250,14 +1250,6 @@ pub const ` + zigStruct + ` = struct {`)
 			baseMethods = append(baseMethods, im.Method)
 		}
 
-		var inheritedVirtualMethods []InheritedMethod
-		for _, base := range c.DirectInherits {
-			inherited := collectInheritedMethodsForZig(base, seenMethods, &zfs)
-			if inherited != nil {
-				inheritedVirtualMethods = append(inheritedVirtualMethods, inherited...)
-			}
-		}
-
 		previousMethods := map[string]struct{}{}
 		seenMethodVariants := map[string]bool{}
 
