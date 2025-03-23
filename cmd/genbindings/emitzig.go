@@ -1038,7 +1038,6 @@ var (
 		"QFileDevice_Seek":                     {},
 		"QFileDevice_SetPermissions":           {},
 		"QFileDevice_Size":                     {},
-		"QGradient_SetStops":                   {},
 		"QPagedPaintDevice_SetPageLayout":      {},
 		"QPagedPaintDevice_SetPageMargins":     {},
 		"QPagedPaintDevice_SetPageOrientation": {},
@@ -1304,13 +1303,6 @@ pub const ` + zigStruct + ` = struct {`)
 
 			if m.InheritedInClass != "" {
 				inheritedFrom = "\n    /// Inherited from " + m.InheritedInClass + "\n    ///"
-			}
-
-			if cmdStructName == "QGradient" && mSafeMethodName == "SetStops" {
-				continue
-			}
-			if (cmdStructName == "QsciScintillaBase" || cmdStructName == "QsciScintilla") && mSafeMethodName == "InputMethodQuery" {
-				continue
 			}
 
 			ret.WriteString(inheritedFrom)
