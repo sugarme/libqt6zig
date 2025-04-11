@@ -1,4 +1,8 @@
 
+### 6.4.2 rev5 (11 April 2025)
+
+* Qt 6.9: Return type for QObjectData::dynamicMetaObject is now const (#7)
+
 ### 6.4.2 rev4 (31 March 2025)
 
 * **BREAKING CHANGE:** Mark Qt Charts restricted (#6)
