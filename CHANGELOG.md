@@ -1,4 +1,8 @@
 
+### 6.4.2 rev7 (16 April 2025)
+
+* **BREAKING CHANGE:** Fix C import structure (#8)
+
 ### 6.4.2 rev6 (14 April 2025)
 
 * Revamp attempt at Windows support
