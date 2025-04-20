@@ -1,4 +1,8 @@
 
+### 6.4.2 rev8 (20 April 2025)
+
+* Add [Qt PDF](https://doc.qt.io/qt-6/qtpdf-index.html) (#9)
+
 ### 6.4.2 rev7 (16 April 2025)
 
 * **BREAKING CHANGE:** Fix C import structure (#8)
