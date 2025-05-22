@@ -1,13 +1,13 @@
 const C = @import("qt6c");
 
-/// https://doc.qt.io/qt-6/thread-basics.html
+/// https://doc.qt.io/qt-6/threads-qobject.html
 pub const Threading = struct {
     /// Direct execution in caller's thread (not thread-safe)
     ///
     /// This executes the callback immediately in the current
     /// thread which is not necessarily the main thread.
     ///
-    /// https://doc.qt.io/qt-6/thread-basics.html
+    /// [Qt documentation](https://doc.qt.io/qt-6/threads-qobject.html)
     ///
     /// ``` func: fn (self: ?*anyopaque, param: ?*anyopaque) callconv(.C) void ```
     pub fn ExecNow(self: ?*anyopaque, func: fn (?*anyopaque, ?*anyopaque) callconv(.C) void) void {
@@ -22,7 +22,7 @@ pub const Threading = struct {
     /// If the signal is in a different thread, this will
     /// be the same as `Async`.
     ///
-    /// https://doc.qt.io/qt-6/thread-basics.html
+    /// [Qt documentation](https://doc.qt.io/qt-6/threads-qobject.html)
     ///
     /// ``` func: fn (self: ?*anyopaque, param: ?*anyopaque) callconv(.C) void ```
     pub fn Exec(self: ?*anyopaque, func: fn (?*anyopaque, ?*anyopaque) callconv(.C) void) void {
@@ -34,7 +34,7 @@ pub const Threading = struct {
     /// This runs the callback only if it does not duplicate
     /// the signal emission.
     ///
-    /// https://doc.qt.io/qt-6/thread-basics.html
+    /// [Qt documentation](https://doc.qt.io/qt-6/threads-qobject.html)
     ///
     /// ``` func: fn (self: ?*anyopaque, param: ?*anyopaque) callconv(.C) void ```
     pub fn ExecUnique(self: ?*anyopaque, func: fn (?*anyopaque, ?*anyopaque) callconv(.C) void) void {
@@ -45,7 +45,7 @@ pub const Threading = struct {
     ///
     /// This runs the callback only once.
     ///
-    /// https://doc.qt.io/qt-6/thread-basics.html
+    /// [Qt documentation](https://doc.qt.io/qt-6/threads-qobject.html)
     ///
     /// ``` func: fn (self: ?*anyopaque, param: ?*anyopaque) callconv(.C) void ```
     pub fn ExecOnce(self: ?*anyopaque, func: fn (?*anyopaque, ?*anyopaque) callconv(.C) void) void {
@@ -58,7 +58,7 @@ pub const Threading = struct {
     /// You should use this whenever you need to
     /// access the main Qt GUI from a non-GUI thread.
     ///
-    /// https://doc.qt.io/qt-6/thread-basics.html
+    /// [Qt documentation](https://doc.qt.io/qt-6/threads-qobject.html)
     ///
     /// ``` func: fn (self: ?*anyopaque, param: ?*anyopaque) callconv(.C) void ```
     pub fn Async(self: ?*anyopaque, func: fn (?*anyopaque, ?*anyopaque) callconv(.C) void) void {
@@ -70,7 +70,7 @@ pub const Threading = struct {
     /// This runs the callback only if it does not duplicate
     /// the signal emission.
     ///
-    /// https://doc.qt.io/qt-6/thread-basics.html
+    /// [Qt documentation](https://doc.qt.io/qt-6/threads-qobject.html)
     ///
     /// ``` func: fn (self: ?*anyopaque, param: ?*anyopaque) callconv(.C) void ```
     pub fn AsyncUnique(self: ?*anyopaque, func: fn (?*anyopaque, ?*anyopaque) callconv(.C) void) void {
@@ -81,7 +81,7 @@ pub const Threading = struct {
     ///
     /// This runs the callback only once.
     ///
-    /// https://doc.qt.io/qt-6/thread-basics.html
+    /// [Qt documentation](https://doc.qt.io/qt-6/threads-qobject.html)
     ///
     /// ``` func: fn (self: ?*anyopaque, param: ?*anyopaque) callconv(.C) void ```
     pub fn AsyncOnce(self: ?*anyopaque, func: fn (?*anyopaque, ?*anyopaque) callconv(.C) void) void {
@@ -93,7 +93,7 @@ pub const Threading = struct {
     /// This runs the callback only once if it does not duplicate
     /// the signal emission.
     ///
-    /// https://doc.qt.io/qt-6/thread-basics.html
+    /// [Qt documentation](https://doc.qt.io/qt-6/threads-qobject.html)
     ///
     /// ``` func: fn (self: ?*anyopaque, param: ?*anyopaque) callconv(.C) void ```
     pub fn AsyncUniqueOnce(self: ?*anyopaque, func: fn (?*anyopaque, ?*anyopaque) callconv(.C) void) void {
@@ -121,7 +121,7 @@ pub const Threading = struct {
     ///
     /// This is not recommended for most cases.
     ///
-    /// https://doc.qt.io/qt-6/thread-basics.html
+    /// [Qt documentation](https://doc.qt.io/qt-6/threads-qobject.html)
     ///
     /// ``` func: fn (self: ?*anyopaque, param: ?*anyopaque) callconv(.C) void ```
     pub fn Sync(self: ?*anyopaque, func: fn (?*anyopaque, ?*anyopaque) callconv(.C) void) void {
@@ -134,7 +134,7 @@ pub const Threading = struct {
     /// the signal emission. All of the cautions from `Sync`
     /// apply here as well.
     ///
-    /// https://doc.qt.io/qt-6/thread-basics.html
+    /// [Qt documentation](https://doc.qt.io/qt-6/threads-qobject.html)
     ///
     /// ``` func: fn (self: ?*anyopaque, param: ?*anyopaque) callconv(.C) void ```
     pub fn SyncUnique(self: ?*anyopaque, func: fn (?*anyopaque, ?*anyopaque) callconv(.C) void) void {
@@ -146,7 +146,7 @@ pub const Threading = struct {
     /// This runs the callback only once. All of the cautions from
     /// `Sync` apply here as well.
     ///
-    /// https://doc.qt.io/qt-6/thread-basics.html
+    /// [Qt documentation](https://doc.qt.io/qt-6/threads-qobject.html)
     ///
     /// ``` func: fn (self: ?*anyopaque, param: ?*anyopaque) callconv(.C) void ```
     pub fn SyncOnce(self: ?*anyopaque, func: fn (?*anyopaque, ?*anyopaque) callconv(.C) void) void {
@@ -159,7 +159,7 @@ pub const Threading = struct {
     /// the signal emission. All of the cautions from `Sync` apply here
     /// as well.
     ///
-    /// https://doc.qt.io/qt-6/thread-basics.html
+    /// [Qt documentation](https://doc.qt.io/qt-6/threads-qobject.html)
     ///
     /// ``` func: fn (self: ?*anyopaque, param: ?*anyopaque) callconv(.C) void ```
     pub fn SyncUniqueOnce(self: ?*anyopaque, func: fn (?*anyopaque, ?*anyopaque) callconv(.C) void) void {
