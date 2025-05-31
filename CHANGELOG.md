@@ -1,4 +1,15 @@
 
+### 6.4.2 rev10 (31 May 2025)
+
+* Breaking changes/improvements (#11)
+  * Add private signals
+  * Use consistent constness
+  * Revamp virtual subclass design
+  * Improve documentation URLs and default panic messages
+  * Update C ABI imports and definitions
+  * Remove dead code
+  * See examples for user-facing API changes
+
 ### 6.4.2 rev9 (3 May 2025)
 
 * Fix projection of QAnyStringView (#10)
