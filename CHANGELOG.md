@@ -1,4 +1,8 @@
 
+### 6.4.2 rev12 (16 June 2025)
+
+* Allow virtual classes for QAccessibleObject and QAccessibleWidget (#13)
+
 ### 6.4.2 rev11 (14 June 2025)
 
 * Leverage consistent constness in internal bindings and wrappers (#12)
