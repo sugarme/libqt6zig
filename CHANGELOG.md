@@ -1,4 +1,8 @@
 
+### 6.4.2 rev13 (3 July 2025)
+
+* Fix formatting bug (#15)
+
 ### 6.4.2 rev12 (16 June 2025)
 
 * Allow virtual classes for QAccessibleObject and QAccessibleWidget (#13)
