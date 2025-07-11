@@ -256,7 +256,7 @@ There are bits of idiomatic Zig in the library in the form of allocators as para
 - [Qt's Meta-Object system](https://doc.qt.io/qt-6/metaobjects.html)
 - [Qt widgets](https://doc.qt.io/qt-6/examples-widgets.html)
 
-The `QByteArray`, `QString`, `QList<T>`, `QVector<T>`, `QMap<K,V>`, `QHash<K,V>` types are projected as plain Zig types: `[]u8`, `[]const u8`, `[]T`, `AutoHashMapUnmanaged[K]V`, and `StringHashMapUnmanaged[V]`. Therefore, it is not possible to call any of the Qt type's methods and some Zig equivalent method must be used instead. (The raw C ABI is also available due to the headers being required to define Qt types in Zig, but it is not recommended for use beyond Qt class type definitions where needed.) This library was constructed with the goal of enabling single-language application development. Anything beyond that boundary is up to the developer to implement.
+The `QByteArray`, `QString`, `QList<T>`, `QVector<T>`, `QMap<K,V>`, `QHash<K,V>` types are projected as plain Zig types: `[]u8`, `[]const u8`, `[]T`, `AutoHashMapUnmanaged[K]V`, and `StringHashMapUnmanaged[V]`. Therefore, it is not possible to call any of the Qt type's methods and some Zig equivalent method must be used instead. The raw C ABI pointer types for the Qt C++ API are available for use where needed by default in the `C` namespace of the top level of the library. This library was constructed with the goal of enabling single-language application development. Anything beyond that boundary is up to the developer to implement.
 
 - Zig string types are internally converted to `QString` using `QString::fromUtf8`. Therefore, the Zig string input must be UTF-8 to avoid [mojibake](https://en.wikipedia.org/wiki/Mojibake). If the Zig input string contains binary data, the conversion would corrupt such bytes into U+FFFD (�). On return to Zig space, this becomes `\xEF\xBF\xBD`.
 
@@ -280,7 +280,7 @@ Qt expects fixed OS threads to be used for each QObject. When you first call `qa
 
 - When accessing Qt objects from inside another thread, it's safest to use `Threading.Async()` (from this library) to access the Qt objects from Qt's main thread. The [Threading library](https://github.com/rcalixte/libqt6zig/tree/master/src/threading/libqt6zigthreading.zig) documents additional available strategies within the source code.
 
-Qt C++ enums are projected as Zig enum structs of `u8`, `i32`, or `i64` values with the same names. For example, `Qt::AlignmentFlag` is projected as `enums.AlignmentFlag` within the `libqnamespace` module and exported by default as `qnamespace_enums.AlignmentFlag` though developers are free to use whatever naming convention they prefer for imports. Enums are currently defined as either `i32` or `i64` (where necessary) in the Zig API and as `i64` when expected as a parameter or returned as a type by the Zig API.
+Qt C++ enums are projected as Zig enum structs of `u8`, `i32`, or `i64` values with the same names. For example, `Qt::AlignmentFlag` is projected as `enums.AlignmentFlag` within the `libqnamespace` module and exported by default as `qnamespace_enums.AlignmentFlag` though developers are free to use whatever naming convention they prefer for imports. The value `Qt::AlignmentFlag::AlignLeft` or the shorthand equivalent `Qt::AlignLeft` is projected by default as `qnamespace_enums.AlignmentFlag.AlignLeft` which is of the type `i32` and value `1`. Enums are currently defined as `i64` when expected as a parameter or returned as a type by the Zig API.
 
 #### API at a glance
 
