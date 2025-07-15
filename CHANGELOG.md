@@ -1,4 +1,8 @@
 
+### 6.8.2 rev2 (14 July 2025)
+
+* **BREAKING CHANGE:** Remove non-digit method overloads (#17)
+
 ### 6.8.2 rev1 (6 July 2025)
 
 * **BREAKING CHANGE:** Update to Qt 6.8 base (#16)
