@@ -12,6 +12,8 @@ pub fn build(b: *std.Build) !void {
         else => false,
     };
 
+    const is_macos = target.result.os.tag == .macos;
+
     var arena = std.heap.ArenaAllocator.init(b.allocator);
     defer arena.deinit();
     const allocator = arena.allocator();
@@ -29,7 +31,7 @@ pub fn build(b: *std.Build) !void {
             var basename = std.fs.path.basename(entry.path);
             basename = basename[3 .. basename.len - 4];
             // conditional removals
-            if ((enable_workaround or is_bsd_family) and (std.mem.eql(u8, basename, "qsctpsocket") or std.mem.eql(u8, basename, "qsctpserver")))
+            if ((enable_workaround or is_bsd_family or is_macos) and (std.mem.eql(u8, basename, "qsctpsocket") or std.mem.eql(u8, basename, "qsctpserver")))
                 continue;
             if (skip_restricted and std.mem.startsWith(u8, entry.path, "src/restricted"))
                 continue;
@@ -58,7 +60,10 @@ pub fn build(b: *std.Build) !void {
             },
             else => &.{"/usr/include/qt6"},
         },
-        .macos => &.{"/usr/local/opt/qt6/include"},
+        .macos => &.{
+            "/usr/local/opt/qt6/include",
+            "/opt/homebrew/include",
+        },
         .windows => try generateWindowsBuildPaths(allocator),
         else => @panic("Unsupported OS"),
     };
