@@ -1,4 +1,11 @@
 
+### 6.8.2 rev5 (3 August 2025)
+
+* Add qrc-zig and uic-zig for use with the Qt Resource System (#23)
+* Replace brute force resolutions with data structures (#22)
+* Update vtable information in documentation comments (#21)
+* Add library support for Homebrew on macOS
+
 ### 6.8.2 rev4 (18 July 2025)
 
 * **BREAKING CHANGE:** Update container type invocations, unblock QVariantList, and update some pointer types (#20)
