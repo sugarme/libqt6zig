@@ -1,4 +1,8 @@
 
+### 6.8.2 rev6 (14 August 2025)
+
+* **BREAKING CHANGE:** Update documentation comments and certain enum conditions (#25)
+
 ### 6.8.2 rev5 (3 August 2025)
 
 * Add qrc-zig and uic-zig for use with the Qt Resource System (#23)
