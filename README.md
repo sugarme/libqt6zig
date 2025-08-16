@@ -40,12 +40,27 @@ Supported platforms
 | Linux   | arm64  | Static             | ✅ Works |
 | Linux   | x86_64 | Static             | ✅ Works |
 
+By default, these bindings are statically linked and the auxiliary dependent libraries are dynamically linked.
+
+Some libraries have restrictions, either due to limited platform support, less-permissive licensing, or other reasons. For less-permissive licenses, these restrictions are documented in the library's README file. The prefix paths for the subdirectory for these libraries are documented below.
+
+| Prefix             | Operating System Support  | Licensing   |
+| ------------------ | ------------------------- | ----------- |
+| extras-            | all platforms<sup>1</sup> | Permissive  |
+| foss-extras-       | BSD & Linux only          | Permissive  |
+| foss-restricted-   | BSD & Linux only          | Restrictive |
+| posix-extras-      | non-Windows               | Permissive  |
+| posix-restricted-  | non-Windows               | Restrictive |
+| restricted-extras- | all platforms             | Restrictive |
+
+<sup>1</sup>While macOS and Windows are supported upstream by the libraries, library installation for these platforms is non-trivial. Therefore, these libraries are disabled by default and must be explicitly enabled with the appropriate build option.
+
 License
 -------
 
 The `libqt6zig` bindings are licensed under the MIT license.
 
-You must also meet your Qt license obligations.
+You must also meet your license obligations for Qt and the included libraries.
 
 Examples
 --------
@@ -102,7 +117,7 @@ Building
 FreeBSD (native)
 ----------------
 
-- *Tested with FreeBSD 14 / Qt 6.8*
+- *Tested with FreeBSD 14 / Qt 6.8 + 6.9*
 
 For dynamic linking with the Qt 6 system libraries:
 
@@ -122,9 +137,9 @@ Linux (native)
 
 - *Tested with Ubuntu 24.04 / Qt 6.4*
 
-- *Tested with Fedora 41 / Qt 6.8*
+- *Tested with Fedora 41 + 42 / Qt 6.8 + 6.9*
 
-- *Tested with EndeavourOS Mercury / Qt 6.8*
+- *Tested with EndeavourOS Mercury Neo / Qt 6.8 + 6.9*
 
 For dynamic linking with the Qt 6 system libraries:
 
@@ -170,10 +185,10 @@ The compiled libraries can be installed to the system in a non-default location 
 sudo zig build --prefix-lib-dir /usr/local/lib/libqt6zig # creates /usr/local/lib/libqt6zig/{libraries}
 ```
 
-To skip the restricted extras:
+Prefixed libraries have per-library options that can be used to enable or disable them (where supported):
 
 ```bash
-zig build -Dskip-restricted
+zig build -Denable-charts=true -Denable-qscintilla=false
 ```
 
 To see the full list of build options available:
@@ -226,7 +241,10 @@ const qwidget = qt6.qwidget;
 const qnamespace_enums = qt6.qnamespace_enums;
 ```
 
-Full examples of the build system and sample applications can be found in the [`libqt6zig-examples`](https://github.com/rcalixte/libqt6zig-examples) repository. Cross-compilation is not supported by this library at this time.
+Full examples of the build system and sample applications can be found in the [`libqt6zig-examples`](https://github.com/rcalixte/libqt6zig-examples) repository.
+
+> [!IMPORTANT]
+> Cross-compilation is not supported by this library at this time.
 
 FAQ
 ---
@@ -248,7 +266,7 @@ Supported Qt C++ class methods are implemented 1:1 as structs of functions where
 
 As a mental model, developers consuming this library should keep in mind that there are essentially two different tracks of memory management required for clean operation: one for the C++ side and one for the Zig side. The Zig side is managed by the developer and the C++ side has variant ownership semantics. Ownership semantics are documented throughout the [C++ documentation](https://doc.qt.io/qt-6/topics-core.html).
 
-There are bits of idiomatic Zig in the library in the form of allocators as parameters to functions but much of the code is not idiomatic for Zig due to the complexity of the Qt C++ API. Knowledge of the Qt C++ API is required to understand and make full use of the library. While not an exhaustive list, there are some key topics to understand:
+There are bits of idiomatic Zig in the library but much of the code is not idiomatic for Zig due to the complexity of the Qt C++ API. One example of this is that although there are allocators as parameters to some functions, they are always the last parameter. Knowledge of the Qt C++ API is required to understand and make full use of the library. While not an exhaustive list, there are some key topics to understand:
 
 - [Qt object ownership](https://doc.qt.io/qt-6/objecttrees.html)
 - [Qt signals and slots](https://doc.qt.io/qt-6/signalsandslots.html)
