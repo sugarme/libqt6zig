@@ -1,7 +1,9 @@
 const std = @import("std");
 const host_os = @import("builtin").os.tag;
 const host_arch = @import("builtin").cpu.arch;
-const stdout = std.io.getStdOut().writer();
+
+var buffer: [64]u8 = undefined;
+var stdout_writer = std.fs.File.stdout().writer(&buffer);
 
 const prefixes: []const []const u8 = &.{
     "extras-",
@@ -93,7 +95,7 @@ pub fn build(b: *std.Build) !void {
                             is_enabled = false;
                         }
                         const map_value = if (option_value == null) is_enabled else option_value.?;
-                        try prefix_options.put(allocator, name, map_value);
+                        try prefix_options.put(allocator, b.dupe(name), map_value);
                     }
                 }
             }
@@ -298,7 +300,8 @@ fn standardOptimizeOption(b: *std.Build, options: std.Build.StandardOptimizeOpti
 
 fn checkSupportedMode(mode: std.builtin.OptimizeMode) void {
     if (mode == .Debug) {
-        stdout.print("libqt6zig does not support Debug build mode.\n", .{}) catch @panic("Failed to print to stdout");
+        stdout_writer.interface.writeAll("libqt6zig does not support Debug build mode.\n") catch @panic("Failed to write to stdout");
+        stdout_writer.interface.flush() catch @panic("Failed to flush stdout writer");
         std.process.exit(1);
     }
 }
