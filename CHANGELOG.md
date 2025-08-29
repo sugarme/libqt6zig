@@ -1,4 +1,8 @@
 
+### 6.8.2 rev19 (29 August 2025)
+
+* **BREAKING CHANGE:** Use more precise flag types and fix enum imports (#44)
+
 ### 6.8.2 rev18 (29 August 2025)
 
 * Update to Zig 0.15
