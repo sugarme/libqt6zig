@@ -1,4 +1,10 @@
 
+### 6.8.2 rev35 (28 September 2025)
+
+* uic-zig: Add support for KDE Frameworks (#69)
+* Remove additional linker errors (#68)
+* Remove additional linker errors (#67)
+
 ### 6.8.2 rev34 (27 September 2025)
 
 * Add [Qt OpenGL](https://doc.qt.io/qt-6/qtopengl-index.html) (#66)
