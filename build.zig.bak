@@ -2,9 +2,8 @@ const std = @import("std");
 const host_os = @import("builtin").os.tag;
 const host_arch = @import("builtin").cpu.arch;
 
-// var buffer: [512]u8 = undefined;
-// var stdout_writer = std.fs.File.stdout().writer(&buffer);
-const stdout_writer = std.debug;
+var buffer: [512]u8 = undefined;
+var stdout_writer = std.fs.File.stdout().writer(&buffer);
 
 var cpp_sources: std.ArrayList([]const u8) = .empty;
 var prefix_options: std.StringHashMapUnmanaged(bool) = .empty;
@@ -99,9 +98,8 @@ pub fn build(b: *std.Build) !void {
     for (extra_paths) |extra_path| {
         if (std.mem.eql(u8, extra_path, "")) continue;
         std.fs.cwd().access(extra_path, .{}) catch {
-            // try stdout_writer.interface.print("WARNING: extra path {s} does not exist\n", .{extra_path});
-            // try stdout_writer.interface.flush();
-            stdout_writer.print("WARNING: extra path {s} does not exist\n", .{extra_path});
+            try stdout_writer.interface.print("WARNING: extra path {s} does not exist\n", .{extra_path});
+            try stdout_writer.interface.flush();
             continue;
         };
         try qt_include_path.append(b.allocator, b.dupe(extra_path));
@@ -231,15 +229,8 @@ const os_include_path: []const []const u8 = switch (host_os) {
         "/opt/local/libexec/qt6/mkspecs/common/posix",
     },
     .windows => &.{
-        // "C:/Qt/6.8.2/mingw_64/include",
-        // "C:/Qt/6.8.2/msvc2022_64/include",
-        // "C:\\Users\\nikon\\projects\\qt6-static\\include\\QtCore",
-        // "C:\\Users\\nikon\\projects\\qt6-static\\include\\QtGui",
-        // "C:\\Users\\nikon\\projects\\qt6-static\\include\\QtWidgets/",
-        "C:/Users/nikon/projects/qt6-static/include",
-        "C:/Users/nikon/projects/qt6-static/include/QtCore",
-        "C:/Users/nikon/projects/qt6-static/include/QtGui",
-        "C:/Users/nikon/projects/qt6-static/include/QtWidgets",
+        "C:/Qt/6.8.2/mingw_64/include",
+        "C:/Qt/6.8.2/msvc2022_64/include",
     },
     else => @panic("Unsupported OS"),
 };
@@ -253,139 +244,139 @@ const qt_modules = &.{
     "QtCore",
     "QtGui",
     "QtWidgets",
-    // // Qt 6 Charts
-    // "QtCharts",
-    // // Qt 6 D-Bus
-    // "QtDBus",
-    // // Qt 6 Multimedia
-    // "QtMultimedia",
-    // "QtMultimediaWidgets",
-    // // Qt 6 Network
-    // "QtNetwork",
-    // // Qt 6 OpenGL
-    // "QtOpenGL",
-    // "QtOpenGLWidgets",
-    // // Qt 6 PDF
-    // "QtPdf",
-    // "QtPdfWidgets",
-    // // Qt 6 Print Support
-    // "QtPrintSupport",
-    // // Qt 6 Spatial Audio
-    // "QtSpatialAudio",
-    // // Qt 6 SQL
-    // "QtSql",
-    // // Qt 6 SVG
-    // "QtSvg",
-    // "QtSvgWidgets",
-    // // Qt 6 WebChannel
-    // "QtWebChannel",
-    // "QtWebChannelQuick",
-    // // Qt 6 WebEngine
-    // "QtWebEngineCore",
-    // "QtWebEngineWidgets",
-    // // Qt 6 XML
-    // "QtXml",
-    // // Qt 6 Attica
-    // "Attica",
-    // "Attica/Attica",
-    // "Attica/attica",
-    // // Qt 6 KCodecs
-    // "KCodecs",
-    // // Qt 6 KCompletion
-    // "KCompletion",
-    // // Qt 6 KConfig
-    // "KConfig",
-    // "KConfigCore",
-    // "KConfigGui",
-    // // Qt 6 KCoreAddons
-    // "KCoreAddons",
-    // // Qt 6 KCrash
-    // "KCrash",
-    // // Qt 6 KGuiAddons
-    // "KGuiAddons",
-    // // Qt 6 KI18n
-    // "KI18n",
-    // "KI18nLocaleData",
-    // // Qt 6 KItemModels
-    // "KItemModels",
-    // // Qt 6 KItemViews
-    // "KItemViews",
-    // // Qt 6 KJobWidgets
-    // "KJobWidgets",
-    // // Qt 6 KNewStuff
-    // "KNewStuff",
-    // "KNewStuffCore",
-    // "KNewStuffCore/KNSCore",
-    // "KNewStuffWidgets",
-    // "KNewStuffWidgets/KNSWidgets",
-    // // Qt 6 KPlotting
-    // "KPlotting",
-    // // Qt 6 KService
-    // "KService",
-    // // Qt 6 Solid
-    // "Solid",
-    // "Solid/Solid",
-    // "Solid/solid",
-    // // Qt 6 Sonnet
-    // "Sonnet",
-    // "SonnetCore",
-    // "SonnetCore/sonnet",
-    // "SonnetUi",
-    // "SonnetUi/sonnet",
-    // // Qt 6 KSvg
-    // "KSvg",
-    // "KSvg/KSvg",
-    // "KSvg/ksvg",
-    // // Qt 6 KSyntaxHighlighting
-    // "KSyntaxHighlighting",
-    // "KSyntaxHighlighting/KSyntaxHighlighting",
-    // // Qt 6 KTextWidgets
-    // "KTextWidgets",
-    // // Qt 6 KWidgetsAddons
-    // "KWidgetsAddons",
-    // // Qt 6 KColorScheme
-    // "KColorScheme",
-    // // Qt 6 KConfigWidgets
-    // "KConfigWidgets",
-    // // Qt 6 KBookmarks
-    // "KBookmarks",
-    // "KBookmarksWidgets",
-    // // Qt 6 KNotifications
-    // "KNotifications",
-    // // Qt 6 KIconThemes
-    // "KIconThemes",
-    // "KIconWidgets",
-    // // Qt 6 KXmlGui
-    // "KXmlGui",
-    // // Qt 6 QtKeychain
-    // "qt6keychain",
-    // // Qt 6 LayerShellQt
-    // "LayerShellQt",
-    // // Qt 6 KGlobalAccel
-    // "KGlobalAccel",
-    // // Qt 6 KWindowSystem
-    // "KWindowSystem",
-    // // Qt 6 KIO
-    // "KIO",
-    // "KIOCore",
-    // "KIOCore/kio",
-    // "KIOFileWidgets",
-    // "KIOGui",
-    // "KIOGui/kio",
-    // "KIOWidgets",
-    // "KIOWidgets/kio",
-    // // Qt 6 KParts
-    // "KParts",
-    // "KParts/KParts",
-    // "KParts/kparts",
-    // // Qt 6 KTextEditor
-    // "KTextEditor",
-    // "KTextEditor/KTextEditor",
-    // "KTextEditor/ktexteditor",
-    // // Qt 6 QCustomPlot
-    // "QCustomPlotQt6",
-    // // Qt 6 QScintilla
-    // "Qsci",
-    // // Qt 6 QTermWidget
-    // "qtermwidget6",
+    // Qt 6 Charts
+    "QtCharts",
+    // Qt 6 D-Bus
+    "QtDBus",
+    // Qt 6 Multimedia
+    "QtMultimedia",
+    "QtMultimediaWidgets",
+    // Qt 6 Network
+    "QtNetwork",
+    // Qt 6 OpenGL
+    "QtOpenGL",
+    "QtOpenGLWidgets",
+    // Qt 6 PDF
+    "QtPdf",
+    "QtPdfWidgets",
+    // Qt 6 Print Support
+    "QtPrintSupport",
+    // Qt 6 Spatial Audio
+    "QtSpatialAudio",
+    // Qt 6 SQL
+    "QtSql",
+    // Qt 6 SVG
+    "QtSvg",
+    "QtSvgWidgets",
+    // Qt 6 WebChannel
+    "QtWebChannel",
+    "QtWebChannelQuick",
+    // Qt 6 WebEngine
+    "QtWebEngineCore",
+    "QtWebEngineWidgets",
+    // Qt 6 XML
+    "QtXml",
+    // Qt 6 Attica
+    "Attica",
+    "Attica/Attica",
+    "Attica/attica",
+    // Qt 6 KCodecs
+    "KCodecs",
+    // Qt 6 KCompletion
+    "KCompletion",
+    // Qt 6 KConfig
+    "KConfig",
+    "KConfigCore",
+    "KConfigGui",
+    // Qt 6 KCoreAddons
+    "KCoreAddons",
+    // Qt 6 KCrash
+    "KCrash",
+    // Qt 6 KGuiAddons
+    "KGuiAddons",
+    // Qt 6 KI18n
+    "KI18n",
+    "KI18nLocaleData",
+    // Qt 6 KItemModels
+    "KItemModels",
+    // Qt 6 KItemViews
+    "KItemViews",
+    // Qt 6 KJobWidgets
+    "KJobWidgets",
+    // Qt 6 KNewStuff
+    "KNewStuff",
+    "KNewStuffCore",
+    "KNewStuffCore/KNSCore",
+    "KNewStuffWidgets",
+    "KNewStuffWidgets/KNSWidgets",
+    // Qt 6 KPlotting
+    "KPlotting",
+    // Qt 6 KService
+    "KService",
+    // Qt 6 Solid
+    "Solid",
+    "Solid/Solid",
+    "Solid/solid",
+    // Qt 6 Sonnet
+    "Sonnet",
+    "SonnetCore",
+    "SonnetCore/sonnet",
+    "SonnetUi",
+    "SonnetUi/sonnet",
+    // Qt 6 KSvg
+    "KSvg",
+    "KSvg/KSvg",
+    "KSvg/ksvg",
+    // Qt 6 KSyntaxHighlighting
+    "KSyntaxHighlighting",
+    "KSyntaxHighlighting/KSyntaxHighlighting",
+    // Qt 6 KTextWidgets
+    "KTextWidgets",
+    // Qt 6 KWidgetsAddons
+    "KWidgetsAddons",
+    // Qt 6 KColorScheme
+    "KColorScheme",
+    // Qt 6 KConfigWidgets
+    "KConfigWidgets",
+    // Qt 6 KBookmarks
+    "KBookmarks",
+    "KBookmarksWidgets",
+    // Qt 6 KNotifications
+    "KNotifications",
+    // Qt 6 KIconThemes
+    "KIconThemes",
+    "KIconWidgets",
+    // Qt 6 KXmlGui
+    "KXmlGui",
+    // Qt 6 QtKeychain
+    "qt6keychain",
+    // Qt 6 LayerShellQt
+    "LayerShellQt",
+    // Qt 6 KGlobalAccel
+    "KGlobalAccel",
+    // Qt 6 KWindowSystem
+    "KWindowSystem",
+    // Qt 6 KIO
+    "KIO",
+    "KIOCore",
+    "KIOCore/kio",
+    "KIOFileWidgets",
+    "KIOGui",
+    "KIOGui/kio",
+    "KIOWidgets",
+    "KIOWidgets/kio",
+    // Qt 6 KParts
+    "KParts",
+    "KParts/KParts",
+    "KParts/kparts",
+    // Qt 6 KTextEditor
+    "KTextEditor",
+    "KTextEditor/KTextEditor",
+    "KTextEditor/ktexteditor",
+    // Qt 6 QCustomPlot
+    "QCustomPlotQt6",
+    // Qt 6 QScintilla
+    "Qsci",
+    // Qt 6 QTermWidget
+    "qtermwidget6",
 };
