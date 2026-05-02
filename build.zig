@@ -224,15 +224,7 @@ const os_include_path: []const []const u8 = switch (host_os) {
         "/opt/local/libexec/qt6/mkspecs/common/posix",
     },
     .windows => &.{
-        // "C:/Qt/6.8.2/mingw_64/include",
-        // "C:/Qt/6.8.2/msvc2022_64/include",
-        // "C:\\Users\\nikon\\projects\\qt6-static\\include\\QtCore",
-        // "C:\\Users\\nikon\\projects\\qt6-static\\include\\QtGui",
-        // "C:\\Users\\nikon\\projects\\qt6-static\\include\\QtWidgets/",
-        "C:/Users/nikon/projects/qt6-static/include",
-        "C:/Users/nikon/projects/qt6-static/include/QtCore",
-        "C:/Users/nikon/projects/qt6-static/include/QtGui",
-        "C:/Users/nikon/projects/qt6-static/include/QtWidgets",
+        "C:/Qt/6.8.3/llvm-mingw_64/include",
     },
     else => @panic("Unsupported OS"),
 };
@@ -246,38 +238,51 @@ const qt_modules = &.{
     "QtCore",
     "QtGui",
     "QtWidgets",
-    // // Qt 6 Charts
-    // "QtCharts",
+
+    // Qt 6 Charts
+    "QtCharts",
+
     // // Qt 6 D-Bus
     // "QtDBus",
-    // // Qt 6 Multimedia
-    // "QtMultimedia",
-    // "QtMultimediaWidgets",
-    // // Qt 6 Network
-    // "QtNetwork",
-    // // Qt 6 OpenGL
-    // "QtOpenGL",
-    // "QtOpenGLWidgets",
+
+    // Qt 6 Multimedia
+    "QtMultimedia",
+    "QtMultimediaWidgets",
+
+    // Qt 6 Network
+    "QtNetwork",
+
+    // Qt 6 OpenGL
+    "QtOpenGL",
+    "QtOpenGLWidgets",
+
     // // Qt 6 PDF
     // "QtPdf",
     // "QtPdfWidgets",
-    // // Qt 6 Print Support
-    // "QtPrintSupport",
-    // // Qt 6 Spatial Audio
-    // "QtSpatialAudio",
-    // // Qt 6 SQL
-    // "QtSql",
-    // // Qt 6 SVG
-    // "QtSvg",
-    // "QtSvgWidgets",
-    // // Qt 6 WebChannel
-    // "QtWebChannel",
-    // "QtWebChannelQuick",
+
+    // Qt 6 Print Support
+    "QtPrintSupport",
+
+    // Qt 6 Spatial Audio
+    "QtSpatialAudio",
+
+    // Qt 6 SQL
+    "QtSql",
+
+    // Qt 6 SVG
+    "QtSvg",
+    "QtSvgWidgets",
+
+    // Qt 6 WebChannel
+    "QtWebChannel",
+    "QtWebChannelQuick",
+
     // // Qt 6 WebEngine
     // "QtWebEngineCore",
     // "QtWebEngineWidgets",
-    // // Qt 6 XML
-    // "QtXml",
+
+    // Qt 6 XML
+    "QtXml",
     // // Qt 6 Attica
     // "Attica",
     // "Attica/Attica",

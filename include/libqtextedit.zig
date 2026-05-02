@@ -402,7 +402,7 @@ pub const qtextedit = struct {
     ///
     /// ``` self: QtC.QTextEdit, allocator: std.mem.Allocator ```
     pub fn ToPlainText(self: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QTextEdit_ToPlainText(@ptrCast(self));
+        var _str = qtc.QTextEdit_ToPlainText(@ptrCast(self));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qtextedit.ToPlainText: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -413,7 +413,7 @@ pub const qtextedit = struct {
     ///
     /// ``` self: QtC.QTextEdit, allocator: std.mem.Allocator ```
     pub fn ToHtml(self: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QTextEdit_ToHtml(@ptrCast(self));
+        var _str = qtc.QTextEdit_ToHtml(@ptrCast(self));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qtextedit.ToHtml: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -424,7 +424,7 @@ pub const qtextedit = struct {
     ///
     /// ``` self: QtC.QTextEdit, allocator: std.mem.Allocator ```
     pub fn ToMarkdown(self: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QTextEdit_ToMarkdown(@ptrCast(self));
+        var _str = qtc.QTextEdit_ToMarkdown(@ptrCast(self));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qtextedit.ToMarkdown: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -738,6 +738,7 @@ pub const qtextedit = struct {
             .len = markdown.len,
             .data = markdown.ptr,
         };
+
         qtc.QTextEdit_SetMarkdown(@ptrCast(self), markdown_str);
     }
 

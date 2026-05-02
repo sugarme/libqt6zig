@@ -1,4 +1,10 @@
 
+### 6.8.2 rev41 (2 May 2026)
+
+* Restore full bindings on top of the Zig 0.16 minimal base (Core, GUI, Widgets, Multimedia, Network, OpenGL, PrintSupport, SpatialAudio, SQL, SVG, WebChannel, XML, Charts)
+* build.zig: enable QtMultimedia, QtMultimediaWidgets, and other modules previously commented out
+* Windows: switch default include path to `C:/Qt/6.8.3/llvm-mingw_64/include`
+
 ### 6.8.2 rev40 (2 May 2026)
 
 * **BREAKING CHANGE:** Update to Zig 0.16

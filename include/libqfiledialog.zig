@@ -1115,7 +1115,7 @@ pub const qfiledialog = struct {
             .len = filter.len,
             .data = filter.ptr,
         };
-        const _str = qtc.QFileDialog_GetOpenFileName4(@ptrCast(parent), caption_str, dir_str, filter_str);
+        var _str = qtc.QFileDialog_GetOpenFileName4(@ptrCast(parent), caption_str, dir_str, filter_str);
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qfiledialog.GetOpenFileName4: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -1185,7 +1185,7 @@ pub const qfiledialog = struct {
             .len = caption.len,
             .data = caption.ptr,
         };
-        const _str = qtc.QFileDialog_GetSaveFileName2(@ptrCast(parent), caption_str);
+        var _str = qtc.QFileDialog_GetSaveFileName2(@ptrCast(parent), caption_str);
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qfiledialog.GetSaveFileName2: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -1227,7 +1227,7 @@ pub const qfiledialog = struct {
             .len = filter.len,
             .data = filter.ptr,
         };
-        const _str = qtc.QFileDialog_GetSaveFileName4(@ptrCast(parent), caption_str, dir_str, filter_str);
+        var _str = qtc.QFileDialog_GetSaveFileName4(@ptrCast(parent), caption_str, dir_str, filter_str);
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qfiledialog.GetSaveFileName4: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -1297,7 +1297,7 @@ pub const qfiledialog = struct {
             .len = caption.len,
             .data = caption.ptr,
         };
-        const _str = qtc.QFileDialog_GetExistingDirectory2(@ptrCast(parent), caption_str);
+        var _str = qtc.QFileDialog_GetExistingDirectory2(@ptrCast(parent), caption_str);
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qfiledialog.GetExistingDirectory2: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -1316,7 +1316,7 @@ pub const qfiledialog = struct {
             .len = dir.len,
             .data = dir.ptr,
         };
-        const _str = qtc.QFileDialog_GetExistingDirectory3(@ptrCast(parent), caption_str, dir_str);
+        var _str = qtc.QFileDialog_GetExistingDirectory3(@ptrCast(parent), caption_str, dir_str);
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qfiledialog.GetExistingDirectory3: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
