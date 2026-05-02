@@ -1,6 +1,7 @@
 .{
     .name = .libqt6zig,
     .version = "6.8.2",
+    .minimum_zig_version = "0.16.0",
     .dependencies = .{},
     .paths = .{
         "LICENSE",

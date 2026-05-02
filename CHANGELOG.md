@@ -1,4 +1,8 @@
 
+### 6.8.2 rev40 (2 May 2026)
+
+* **BREAKING CHANGE:** Update to Zig 0.16
+
 ### 6.8.2 rev39 (11 October 2025)
 
 * **BREAKING CHANGE:** Update for Qt 6.10 (#75)

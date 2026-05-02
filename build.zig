@@ -2,16 +2,13 @@ const std = @import("std");
 const host_os = @import("builtin").os.tag;
 const host_arch = @import("builtin").cpu.arch;
 
-// var buffer: [512]u8 = undefined;
-// var stdout_writer = std.fs.File.stdout().writer(&buffer);
-const stdout_writer = std.debug;
-
 var cpp_sources: std.ArrayList([]const u8) = .empty;
 var prefix_options: std.StringHashMapUnmanaged(bool) = .empty;
 var qt_include_path: std.ArrayList([]const u8) = .empty;
 var cpp_flags: std.ArrayList([]const u8) = .empty;
 
 pub fn build(b: *std.Build) !void {
+    const io = b.graph.io;
     const target = b.standardTargetOptions(.{});
     const linkage = b.option(std.builtin.LinkMode, "linkage", "Link mode for libqt6zig") orelse .static;
     const enable_workaround = b.option(bool, "enable-workaround", "Enable workaround for missing Qt C++ headers") orelse false;
@@ -34,13 +31,12 @@ pub fn build(b: *std.Build) !void {
     defer arena.deinit();
     const allocator = arena.allocator();
 
-    const src_dir = try std.fs.path.join(allocator, &.{ b.build_root.path.?, "src" });
-    var dir = try std.fs.cwd().openDir(src_dir, .{ .iterate = true });
-    defer dir.close();
+    var dir = try b.build_root.handle.openDir(io, "src", .{ .iterate = true });
+    defer dir.close(io);
     var walker = try dir.walk(b.allocator);
     defer walker.deinit();
 
-    while (try walker.next()) |entry| {
+    while (try walker.next(io)) |entry| {
         entry_loop: {
             if (entry.kind == .file and std.mem.endsWith(u8, entry.path, ".cpp")) {
                 var basename = std.fs.path.basename(entry.path);
@@ -96,18 +92,17 @@ pub fn build(b: *std.Build) !void {
 
     std.debug.assert(cpp_sources.items.len != 0);
 
+    const cwd = std.Io.Dir.cwd();
     for (extra_paths) |extra_path| {
         if (std.mem.eql(u8, extra_path, "")) continue;
-        std.fs.cwd().access(extra_path, .{}) catch {
-            // try stdout_writer.interface.print("WARNING: extra path {s} does not exist\n", .{extra_path});
-            // try stdout_writer.interface.flush();
-            stdout_writer.print("WARNING: extra path {s} does not exist\n", .{extra_path});
+        cwd.access(io, extra_path, .{}) catch {
+            std.debug.print("WARNING: extra path {s} does not exist\n", .{extra_path});
             continue;
         };
         try qt_include_path.append(b.allocator, b.dupe(extra_path));
     }
     for (os_include_path) |os_path| {
-        std.fs.cwd().access(os_path, .{}) catch {
+        cwd.access(io, os_path, .{}) catch {
             continue;
         };
         try qt_include_path.append(b.allocator, b.dupe(os_path));
@@ -137,7 +132,7 @@ pub fn build(b: *std.Build) !void {
     inline for (qt_modules) |module| {
         for (qt_include_path.items) |qt_path| {
             const includePath = b.fmt("{s}/{s}", .{ qt_path, module });
-            std.fs.cwd().access(includePath, .{}) catch {
+            cwd.access(io, includePath, .{}) catch {
                 continue;
             };
             try cpp_flags.append(allocator, b.fmt("-I{s}", .{includePath}));
@@ -191,8 +186,6 @@ pub fn build(b: *std.Build) !void {
     libqt6zig.addImport("qt6c", qtc_bindings);
     libqt6zig.addImport("qt6zig", qtzig_types);
     libqt6zig.addImport("qtzig", qtzig_types);
-
-    try b.modules.put("libqt6zig", libqt6zig);
 }
 
 const is_bsd_host = switch (host_os) {
