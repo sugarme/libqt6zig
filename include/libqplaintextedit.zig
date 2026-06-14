@@ -345,7 +345,9 @@ pub const qplaintextedit = struct {
     ///
     /// ``` self: QtC.QPlainTextEdit, allocator: std.mem.Allocator ```
     pub fn ToPlainText(self: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QPlainTextEdit_ToPlainText(@ptrCast(self));
+        // Zig 0.17: `&_str` must be a mutable [*c] for libqt_string_free, so the
+        // local is `var` (other string-getters share this pattern; fix as used).
+        var _str = qtc.QPlainTextEdit_ToPlainText(@ptrCast(self));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qplaintextedit.ToPlainText: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);

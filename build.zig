@@ -31,7 +31,9 @@ pub fn build(b: *std.Build) !void {
     defer arena.deinit();
     const allocator = arena.allocator();
 
-    var dir = try b.build_root.handle.openDir(io, "src", .{ .iterate = true });
+    // Zig 0.17.0-dev.704 reshaped std.Build: the package build root moved from
+    // `b.build_root: Cache.Directory` to `b.root: Cache.Path`.
+    var dir = try b.root.root_dir.handle.openDir(io, "src", .{ .iterate = true });
     defer dir.close(io);
     var walker = try dir.walk(b.allocator);
     defer walker.deinit();
@@ -121,7 +123,10 @@ pub fn build(b: *std.Build) !void {
     const translate_c = b.addTranslateC(.{
         .root_source_file = b.path("include/libqt6c.h"),
         .target = target,
-        .optimize = optimize,
+        // Zig 0.17's translate-c rejects -Ofast (ReleaseFast); its optimization
+        // is irrelevant (pure C→Zig binding translation), so pin it to Debug.
+        // The per-binding libraries below keep `optimize` (ReleaseFast).
+        .optimize = .Debug,
     });
 
     for (qt_include_path.items) |qt_path| {
