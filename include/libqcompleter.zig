@@ -112,7 +112,7 @@ pub const qcompleter = struct {
     /// ``` s: []const u8, allocator: std.mem.Allocator ```
     pub fn Tr(s: []const u8, allocator: std.mem.Allocator) []const u8 {
         const s_Cstring = s.ptr;
-        const _str = qtc.QCompleter_Tr(s_Cstring);
+        var _str = qtc.QCompleter_Tr(s_Cstring);
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qcompleter.Tr: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -306,7 +306,7 @@ pub const qcompleter = struct {
     ///
     /// ``` self: QtC.QCompleter, allocator: std.mem.Allocator ```
     pub fn CurrentCompletion(self: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QCompleter_CurrentCompletion(@ptrCast(self));
+        var _str = qtc.QCompleter_CurrentCompletion(@ptrCast(self));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qcompleter.CurrentCompletion: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -324,7 +324,7 @@ pub const qcompleter = struct {
     ///
     /// ``` self: QtC.QCompleter, allocator: std.mem.Allocator ```
     pub fn CompletionPrefix(self: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QCompleter_CompletionPrefix(@ptrCast(self));
+        var _str = qtc.QCompleter_CompletionPrefix(@ptrCast(self));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qcompleter.CompletionPrefix: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -360,7 +360,7 @@ pub const qcompleter = struct {
     ///
     /// ``` self: QtC.QCompleter, index: QtC.QModelIndex, allocator: std.mem.Allocator ```
     pub fn PathFromIndex(self: ?*anyopaque, index: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QCompleter_PathFromIndex(@ptrCast(self), @ptrCast(index));
+        var _str = qtc.QCompleter_PathFromIndex(@ptrCast(self), @ptrCast(index));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qcompleter.PathFromIndex: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -382,7 +382,7 @@ pub const qcompleter = struct {
     ///
     /// ``` self: QtC.QCompleter, index: QtC.QModelIndex, allocator: std.mem.Allocator ```
     pub fn QBasePathFromIndex(self: ?*anyopaque, index: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QCompleter_QBasePathFromIndex(@ptrCast(self), @ptrCast(index));
+        var _str = qtc.QCompleter_QBasePathFromIndex(@ptrCast(self), @ptrCast(index));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qcompleter.PathFromIndex: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -544,7 +544,7 @@ pub const qcompleter = struct {
     pub fn Tr2(s: []const u8, c: []const u8, allocator: std.mem.Allocator) []const u8 {
         const s_Cstring = s.ptr;
         const c_Cstring = c.ptr;
-        const _str = qtc.QCompleter_Tr2(s_Cstring, c_Cstring);
+        var _str = qtc.QCompleter_Tr2(s_Cstring, c_Cstring);
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qcompleter.Tr2: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -557,7 +557,7 @@ pub const qcompleter = struct {
     pub fn Tr3(s: []const u8, c: []const u8, n: i32, allocator: std.mem.Allocator) []const u8 {
         const s_Cstring = s.ptr;
         const c_Cstring = c.ptr;
-        const _str = qtc.QCompleter_Tr3(s_Cstring, c_Cstring, @intCast(n));
+        var _str = qtc.QCompleter_Tr3(s_Cstring, c_Cstring, @intCast(n));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qcompleter.Tr3: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -577,7 +577,7 @@ pub const qcompleter = struct {
     ///
     /// ``` self: QtC.QCompleter, allocator: std.mem.Allocator ```
     pub fn ObjectName(self: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QObject_ObjectName(@ptrCast(self));
+        var _str = qtc.QObject_ObjectName(@ptrCast(self));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qcompleter.ObjectName: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);

@@ -9,7 +9,7 @@ pub const qstandardpaths = struct {
     ///
     /// ``` typeVal: qstandardpaths_enums.StandardLocation, allocator: std.mem.Allocator ```
     pub fn WritableLocation(typeVal: i32, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QStandardPaths_WritableLocation(@intCast(typeVal));
+        var _str = qtc.QStandardPaths_WritableLocation(@intCast(typeVal));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qstandardpaths.WritableLocation: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -46,7 +46,7 @@ pub const qstandardpaths = struct {
             .len = fileName.len,
             .data = fileName.ptr,
         };
-        const _str = qtc.QStandardPaths_Locate(@intCast(typeVal), fileName_str);
+        var _str = qtc.QStandardPaths_Locate(@intCast(typeVal), fileName_str);
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qstandardpaths.Locate: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -83,7 +83,7 @@ pub const qstandardpaths = struct {
     ///
     /// ``` typeVal: qstandardpaths_enums.StandardLocation, allocator: std.mem.Allocator ```
     pub fn DisplayName(typeVal: i32, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QStandardPaths_DisplayName(@intCast(typeVal));
+        var _str = qtc.QStandardPaths_DisplayName(@intCast(typeVal));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qstandardpaths.DisplayName: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -98,7 +98,7 @@ pub const qstandardpaths = struct {
             .len = executableName.len,
             .data = executableName.ptr,
         };
-        const _str = qtc.QStandardPaths_FindExecutable(executableName_str);
+        var _str = qtc.QStandardPaths_FindExecutable(executableName_str);
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qstandardpaths.FindExecutable: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -127,7 +127,7 @@ pub const qstandardpaths = struct {
             .len = fileName.len,
             .data = fileName.ptr,
         };
-        const _str = qtc.QStandardPaths_Locate3(@intCast(typeVal), fileName_str, @intCast(options));
+        var _str = qtc.QStandardPaths_Locate3(@intCast(typeVal), fileName_str, @intCast(options));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qstandardpaths.Locate3: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -180,7 +180,7 @@ pub const qstandardpaths = struct {
             .len = paths.len,
             .data = paths_arr.ptr,
         };
-        const _str = qtc.QStandardPaths_FindExecutable2(executableName_str, paths_list);
+        var _str = qtc.QStandardPaths_FindExecutable2(executableName_str, paths_list);
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qstandardpaths.FindExecutable2: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);

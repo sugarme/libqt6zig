@@ -115,7 +115,7 @@ pub const qsqlerror = struct {
     ///
     /// ``` self: QtC.QSqlError, allocator: std.mem.Allocator ```
     pub fn DriverText(self: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QSqlError_DriverText(@ptrCast(self));
+        var _str = qtc.QSqlError_DriverText(@ptrCast(self));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qsqlerror.DriverText: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -126,7 +126,7 @@ pub const qsqlerror = struct {
     ///
     /// ``` self: QtC.QSqlError, allocator: std.mem.Allocator ```
     pub fn DatabaseText(self: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QSqlError_DatabaseText(@ptrCast(self));
+        var _str = qtc.QSqlError_DatabaseText(@ptrCast(self));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qsqlerror.DatabaseText: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -146,7 +146,7 @@ pub const qsqlerror = struct {
     ///
     /// ``` self: QtC.QSqlError, allocator: std.mem.Allocator ```
     pub fn NativeErrorCode(self: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QSqlError_NativeErrorCode(@ptrCast(self));
+        var _str = qtc.QSqlError_NativeErrorCode(@ptrCast(self));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qsqlerror.NativeErrorCode: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -157,7 +157,7 @@ pub const qsqlerror = struct {
     ///
     /// ``` self: QtC.QSqlError, allocator: std.mem.Allocator ```
     pub fn Text(self: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QSqlError_Text(@ptrCast(self));
+        var _str = qtc.QSqlError_Text(@ptrCast(self));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qsqlerror.Text: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);

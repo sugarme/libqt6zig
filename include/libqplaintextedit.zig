@@ -91,7 +91,7 @@ pub const qplaintextedit = struct {
     /// ``` s: []const u8, allocator: std.mem.Allocator ```
     pub fn Tr(s: []const u8, allocator: std.mem.Allocator) []const u8 {
         const s_Cstring = s.ptr;
-        const _str = qtc.QPlainTextEdit_Tr(s_Cstring);
+        var _str = qtc.QPlainTextEdit_Tr(s_Cstring);
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qplaintextedit.Tr: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -127,7 +127,7 @@ pub const qplaintextedit = struct {
     ///
     /// ``` self: QtC.QPlainTextEdit, allocator: std.mem.Allocator ```
     pub fn PlaceholderText(self: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QPlainTextEdit_PlaceholderText(@ptrCast(self));
+        var _str = qtc.QPlainTextEdit_PlaceholderText(@ptrCast(self));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qplaintextedit.PlaceholderText: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -228,7 +228,7 @@ pub const qplaintextedit = struct {
     ///
     /// ``` self: QtC.QPlainTextEdit, allocator: std.mem.Allocator ```
     pub fn DocumentTitle(self: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QPlainTextEdit_DocumentTitle(@ptrCast(self));
+        var _str = qtc.QPlainTextEdit_DocumentTitle(@ptrCast(self));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qplaintextedit.DocumentTitle: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -425,7 +425,7 @@ pub const qplaintextedit = struct {
     ///
     /// ``` self: QtC.QPlainTextEdit, pos: QtC.QPoint, allocator: std.mem.Allocator ```
     pub fn AnchorAt(self: ?*anyopaque, pos: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QPlainTextEdit_AnchorAt(@ptrCast(self), @ptrCast(pos));
+        var _str = qtc.QPlainTextEdit_AnchorAt(@ptrCast(self), @ptrCast(pos));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qplaintextedit.AnchorAt: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -1628,7 +1628,7 @@ pub const qplaintextedit = struct {
     pub fn Tr2(s: []const u8, c: []const u8, allocator: std.mem.Allocator) []const u8 {
         const s_Cstring = s.ptr;
         const c_Cstring = c.ptr;
-        const _str = qtc.QPlainTextEdit_Tr2(s_Cstring, c_Cstring);
+        var _str = qtc.QPlainTextEdit_Tr2(s_Cstring, c_Cstring);
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qplaintextedit.Tr2: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -1641,7 +1641,7 @@ pub const qplaintextedit = struct {
     pub fn Tr3(s: []const u8, c: []const u8, n: i32, allocator: std.mem.Allocator) []const u8 {
         const s_Cstring = s.ptr;
         const c_Cstring = c.ptr;
-        const _str = qtc.QPlainTextEdit_Tr3(s_Cstring, c_Cstring, @intCast(n));
+        var _str = qtc.QPlainTextEdit_Tr3(s_Cstring, c_Cstring, @intCast(n));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qplaintextedit.Tr3: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -2883,7 +2883,7 @@ pub const qplaintextedit = struct {
     ///
     /// ``` self: QtC.QPlainTextEdit, allocator: std.mem.Allocator ```
     pub fn StyleSheet(self: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QWidget_StyleSheet(@ptrCast(self));
+        var _str = qtc.QWidget_StyleSheet(@ptrCast(self));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qplaintextedit.StyleSheet: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -2896,7 +2896,7 @@ pub const qplaintextedit = struct {
     ///
     /// ``` self: QtC.QPlainTextEdit, allocator: std.mem.Allocator ```
     pub fn WindowTitle(self: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QWidget_WindowTitle(@ptrCast(self));
+        var _str = qtc.QWidget_WindowTitle(@ptrCast(self));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qplaintextedit.WindowTitle: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -2940,7 +2940,7 @@ pub const qplaintextedit = struct {
     ///
     /// ``` self: QtC.QPlainTextEdit, allocator: std.mem.Allocator ```
     pub fn WindowIconText(self: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QWidget_WindowIconText(@ptrCast(self));
+        var _str = qtc.QWidget_WindowIconText(@ptrCast(self));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qplaintextedit.WindowIconText: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -2966,7 +2966,7 @@ pub const qplaintextedit = struct {
     ///
     /// ``` self: QtC.QPlainTextEdit, allocator: std.mem.Allocator ```
     pub fn WindowRole(self: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QWidget_WindowRole(@ptrCast(self));
+        var _str = qtc.QWidget_WindowRole(@ptrCast(self));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qplaintextedit.WindowRole: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -2992,7 +2992,7 @@ pub const qplaintextedit = struct {
     ///
     /// ``` self: QtC.QPlainTextEdit, allocator: std.mem.Allocator ```
     pub fn WindowFilePath(self: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QWidget_WindowFilePath(@ptrCast(self));
+        var _str = qtc.QWidget_WindowFilePath(@ptrCast(self));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qplaintextedit.WindowFilePath: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -3045,7 +3045,7 @@ pub const qplaintextedit = struct {
     ///
     /// ``` self: QtC.QPlainTextEdit, allocator: std.mem.Allocator ```
     pub fn ToolTip(self: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QWidget_ToolTip(@ptrCast(self));
+        var _str = qtc.QWidget_ToolTip(@ptrCast(self));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qplaintextedit.ToolTip: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -3089,7 +3089,7 @@ pub const qplaintextedit = struct {
     ///
     /// ``` self: QtC.QPlainTextEdit, allocator: std.mem.Allocator ```
     pub fn StatusTip(self: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QWidget_StatusTip(@ptrCast(self));
+        var _str = qtc.QWidget_StatusTip(@ptrCast(self));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qplaintextedit.StatusTip: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -3115,7 +3115,7 @@ pub const qplaintextedit = struct {
     ///
     /// ``` self: QtC.QPlainTextEdit, allocator: std.mem.Allocator ```
     pub fn WhatsThis(self: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QWidget_WhatsThis(@ptrCast(self));
+        var _str = qtc.QWidget_WhatsThis(@ptrCast(self));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qplaintextedit.WhatsThis: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -3128,7 +3128,7 @@ pub const qplaintextedit = struct {
     ///
     /// ``` self: QtC.QPlainTextEdit, allocator: std.mem.Allocator ```
     pub fn AccessibleName(self: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QWidget_AccessibleName(@ptrCast(self));
+        var _str = qtc.QWidget_AccessibleName(@ptrCast(self));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qplaintextedit.AccessibleName: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -3154,7 +3154,7 @@ pub const qplaintextedit = struct {
     ///
     /// ``` self: QtC.QPlainTextEdit, allocator: std.mem.Allocator ```
     pub fn AccessibleDescription(self: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QWidget_AccessibleDescription(@ptrCast(self));
+        var _str = qtc.QWidget_AccessibleDescription(@ptrCast(self));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qplaintextedit.AccessibleDescription: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -4562,7 +4562,7 @@ pub const qplaintextedit = struct {
     ///
     /// ``` self: QtC.QPlainTextEdit, allocator: std.mem.Allocator ```
     pub fn ObjectName(self: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QObject_ObjectName(@ptrCast(self));
+        var _str = qtc.QObject_ObjectName(@ptrCast(self));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qplaintextedit.ObjectName: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -6471,7 +6471,7 @@ pub const qplaintextdocumentlayout = struct {
     /// ``` s: []const u8, allocator: std.mem.Allocator ```
     pub fn Tr(s: []const u8, allocator: std.mem.Allocator) []const u8 {
         const s_Cstring = s.ptr;
-        const _str = qtc.QPlainTextDocumentLayout_Tr(s_Cstring);
+        var _str = qtc.QPlainTextDocumentLayout_Tr(s_Cstring);
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qplaintextdocumentlayout.Tr: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -6687,7 +6687,7 @@ pub const qplaintextdocumentlayout = struct {
     pub fn Tr2(s: []const u8, c: []const u8, allocator: std.mem.Allocator) []const u8 {
         const s_Cstring = s.ptr;
         const c_Cstring = c.ptr;
-        const _str = qtc.QPlainTextDocumentLayout_Tr2(s_Cstring, c_Cstring);
+        var _str = qtc.QPlainTextDocumentLayout_Tr2(s_Cstring, c_Cstring);
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qplaintextdocumentlayout.Tr2: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -6700,7 +6700,7 @@ pub const qplaintextdocumentlayout = struct {
     pub fn Tr3(s: []const u8, c: []const u8, n: i32, allocator: std.mem.Allocator) []const u8 {
         const s_Cstring = s.ptr;
         const c_Cstring = c.ptr;
-        const _str = qtc.QPlainTextDocumentLayout_Tr3(s_Cstring, c_Cstring, @intCast(n));
+        var _str = qtc.QPlainTextDocumentLayout_Tr3(s_Cstring, c_Cstring, @intCast(n));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qplaintextdocumentlayout.Tr3: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -6713,7 +6713,7 @@ pub const qplaintextdocumentlayout = struct {
     ///
     /// ``` self: QtC.QPlainTextDocumentLayout, pos: QtC.QPointF, allocator: std.mem.Allocator ```
     pub fn AnchorAt(self: ?*anyopaque, pos: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QAbstractTextDocumentLayout_AnchorAt(@ptrCast(self), @ptrCast(pos));
+        var _str = qtc.QAbstractTextDocumentLayout_AnchorAt(@ptrCast(self), @ptrCast(pos));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qplaintextdocumentlayout.AnchorAt: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -6726,7 +6726,7 @@ pub const qplaintextdocumentlayout = struct {
     ///
     /// ``` self: QtC.QPlainTextDocumentLayout, pos: QtC.QPointF, allocator: std.mem.Allocator ```
     pub fn ImageAt(self: ?*anyopaque, pos: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QAbstractTextDocumentLayout_ImageAt(@ptrCast(self), @ptrCast(pos));
+        var _str = qtc.QAbstractTextDocumentLayout_ImageAt(@ptrCast(self), @ptrCast(pos));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qplaintextdocumentlayout.ImageAt: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -6910,7 +6910,7 @@ pub const qplaintextdocumentlayout = struct {
     ///
     /// ``` self: QtC.QPlainTextDocumentLayout, allocator: std.mem.Allocator ```
     pub fn ObjectName(self: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QObject_ObjectName(@ptrCast(self));
+        var _str = qtc.QObject_ObjectName(@ptrCast(self));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qplaintextdocumentlayout.ObjectName: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);

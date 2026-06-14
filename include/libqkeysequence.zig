@@ -124,7 +124,7 @@ pub const qkeysequence = struct {
     ///
     /// ``` self: QtC.QKeySequence, allocator: std.mem.Allocator ```
     pub fn ToString(self: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QKeySequence_ToString(@ptrCast(self));
+        var _str = qtc.QKeySequence_ToString(@ptrCast(self));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qkeysequence.ToString: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -166,7 +166,7 @@ pub const qkeysequence = struct {
             .len = list.len,
             .data = @ptrCast(list.ptr),
         };
-        const _str = qtc.QKeySequence_ListToString(list_list);
+        var _str = qtc.QKeySequence_ListToString(list_list);
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qkeysequence.ListToString: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -286,7 +286,7 @@ pub const qkeysequence = struct {
     ///
     /// ``` self: QtC.QKeySequence, format: qkeysequence_enums.SequenceFormat, allocator: std.mem.Allocator ```
     pub fn ToString1(self: ?*anyopaque, format: i32, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QKeySequence_ToString1(@ptrCast(self), @intCast(format));
+        var _str = qtc.QKeySequence_ToString1(@ptrCast(self), @intCast(format));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qkeysequence.ToString1: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -328,7 +328,7 @@ pub const qkeysequence = struct {
             .len = list.len,
             .data = @ptrCast(list.ptr),
         };
-        const _str = qtc.QKeySequence_ListToString2(list_list, @intCast(format));
+        var _str = qtc.QKeySequence_ListToString2(list_list, @intCast(format));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qkeysequence.ListToString2: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);

@@ -268,7 +268,7 @@ pub const qxmlstreamentityresolver = struct {
             .len = systemId.len,
             .data = systemId.ptr,
         };
-        const _str = qtc.QXmlStreamEntityResolver_ResolveEntity(@ptrCast(self), publicId_str, systemId_str);
+        var _str = qtc.QXmlStreamEntityResolver_ResolveEntity(@ptrCast(self), publicId_str, systemId_str);
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qxmlstreamentityresolver.ResolveEntity: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -298,7 +298,7 @@ pub const qxmlstreamentityresolver = struct {
             .len = systemId.len,
             .data = systemId.ptr,
         };
-        const _str = qtc.QXmlStreamEntityResolver_QBaseResolveEntity(@ptrCast(self), publicId_str, systemId_str);
+        var _str = qtc.QXmlStreamEntityResolver_QBaseResolveEntity(@ptrCast(self), publicId_str, systemId_str);
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qxmlstreamentityresolver.ResolveEntity: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -313,7 +313,7 @@ pub const qxmlstreamentityresolver = struct {
             .len = name.len,
             .data = name.ptr,
         };
-        const _str = qtc.QXmlStreamEntityResolver_ResolveUndeclaredEntity(@ptrCast(self), name_str);
+        var _str = qtc.QXmlStreamEntityResolver_ResolveUndeclaredEntity(@ptrCast(self), name_str);
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qxmlstreamentityresolver.ResolveUndeclaredEntity: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -339,7 +339,7 @@ pub const qxmlstreamentityresolver = struct {
             .len = name.len,
             .data = name.ptr,
         };
-        const _str = qtc.QXmlStreamEntityResolver_QBaseResolveUndeclaredEntity(@ptrCast(self), name_str);
+        var _str = qtc.QXmlStreamEntityResolver_QBaseResolveUndeclaredEntity(@ptrCast(self), name_str);
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qxmlstreamentityresolver.ResolveUndeclaredEntity: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -459,7 +459,7 @@ pub const qxmlstreamreader = struct {
     ///
     /// ``` self: QtC.QXmlStreamReader, allocator: std.mem.Allocator ```
     pub fn TokenString(self: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QXmlStreamReader_TokenString(@ptrCast(self));
+        var _str = qtc.QXmlStreamReader_TokenString(@ptrCast(self));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qxmlstreamreader.TokenString: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -603,7 +603,7 @@ pub const qxmlstreamreader = struct {
     ///
     /// ``` self: QtC.QXmlStreamReader, allocator: std.mem.Allocator ```
     pub fn ReadElementText(self: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QXmlStreamReader_ReadElementText(@ptrCast(self));
+        var _str = qtc.QXmlStreamReader_ReadElementText(@ptrCast(self));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qxmlstreamreader.ReadElementText: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -689,7 +689,7 @@ pub const qxmlstreamreader = struct {
     ///
     /// ``` self: QtC.QXmlStreamReader, allocator: std.mem.Allocator ```
     pub fn ErrorString(self: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QXmlStreamReader_ErrorString(@ptrCast(self));
+        var _str = qtc.QXmlStreamReader_ErrorString(@ptrCast(self));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qxmlstreamreader.ErrorString: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -730,7 +730,7 @@ pub const qxmlstreamreader = struct {
     ///
     /// ``` self: QtC.QXmlStreamReader, behaviour: qxmlstream_enums.ReadElementTextBehaviour, allocator: std.mem.Allocator ```
     pub fn ReadElementText1(self: ?*anyopaque, behaviour: i32, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QXmlStreamReader_ReadElementText1(@ptrCast(self), @intCast(behaviour));
+        var _str = qtc.QXmlStreamReader_ReadElementText1(@ptrCast(self), @intCast(behaviour));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qxmlstreamreader.ReadElementText1: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);

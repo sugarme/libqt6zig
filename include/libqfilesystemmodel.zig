@@ -63,7 +63,7 @@ pub const qfilesystemmodel = struct {
     /// ``` s: []const u8, allocator: std.mem.Allocator ```
     pub fn Tr(s: []const u8, allocator: std.mem.Allocator) []const u8 {
         const s_Cstring = s.ptr;
-        const _str = qtc.QFileSystemModel_Tr(s_Cstring);
+        var _str = qtc.QFileSystemModel_Tr(s_Cstring);
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qfilesystemmodel.Tr: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -689,7 +689,7 @@ pub const qfilesystemmodel = struct {
     ///
     /// ``` self: QtC.QFileSystemModel, allocator: std.mem.Allocator ```
     pub fn RootPath(self: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QFileSystemModel_RootPath(@ptrCast(self));
+        var _str = qtc.QFileSystemModel_RootPath(@ptrCast(self));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qfilesystemmodel.RootPath: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -850,7 +850,7 @@ pub const qfilesystemmodel = struct {
     ///
     /// ``` self: QtC.QFileSystemModel, index: QtC.QModelIndex, allocator: std.mem.Allocator ```
     pub fn FilePath(self: ?*anyopaque, index: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QFileSystemModel_FilePath(@ptrCast(self), @ptrCast(index));
+        var _str = qtc.QFileSystemModel_FilePath(@ptrCast(self), @ptrCast(index));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qfilesystemmodel.FilePath: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -875,7 +875,7 @@ pub const qfilesystemmodel = struct {
     ///
     /// ``` self: QtC.QFileSystemModel, index: QtC.QModelIndex, allocator: std.mem.Allocator ```
     pub fn Type(self: ?*anyopaque, index: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QFileSystemModel_Type(@ptrCast(self), @ptrCast(index));
+        var _str = qtc.QFileSystemModel_Type(@ptrCast(self), @ptrCast(index));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qfilesystemmodel.Type: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -918,7 +918,7 @@ pub const qfilesystemmodel = struct {
     ///
     /// ``` self: QtC.QFileSystemModel, index: QtC.QModelIndex, allocator: std.mem.Allocator ```
     pub fn FileName(self: ?*anyopaque, index: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QFileSystemModel_FileName(@ptrCast(self), @ptrCast(index));
+        var _str = qtc.QFileSystemModel_FileName(@ptrCast(self), @ptrCast(index));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qfilesystemmodel.FileName: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -1011,7 +1011,7 @@ pub const qfilesystemmodel = struct {
     pub fn Tr2(s: []const u8, c: []const u8, allocator: std.mem.Allocator) []const u8 {
         const s_Cstring = s.ptr;
         const c_Cstring = c.ptr;
-        const _str = qtc.QFileSystemModel_Tr2(s_Cstring, c_Cstring);
+        var _str = qtc.QFileSystemModel_Tr2(s_Cstring, c_Cstring);
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qfilesystemmodel.Tr2: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -1024,7 +1024,7 @@ pub const qfilesystemmodel = struct {
     pub fn Tr3(s: []const u8, c: []const u8, n: i32, allocator: std.mem.Allocator) []const u8 {
         const s_Cstring = s.ptr;
         const c_Cstring = c.ptr;
-        const _str = qtc.QFileSystemModel_Tr3(s_Cstring, c_Cstring, @intCast(n));
+        var _str = qtc.QFileSystemModel_Tr3(s_Cstring, c_Cstring, @intCast(n));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qfilesystemmodel.Tr3: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -1370,7 +1370,7 @@ pub const qfilesystemmodel = struct {
     ///
     /// ``` self: QtC.QFileSystemModel, allocator: std.mem.Allocator ```
     pub fn ObjectName(self: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QObject_ObjectName(@ptrCast(self));
+        var _str = qtc.QObject_ObjectName(@ptrCast(self));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qfilesystemmodel.ObjectName: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);

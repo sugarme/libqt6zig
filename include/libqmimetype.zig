@@ -50,7 +50,7 @@ pub const qmimetype = struct {
     ///
     /// ``` self: QtC.QMimeType, allocator: std.mem.Allocator ```
     pub fn Name(self: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QMimeType_Name(@ptrCast(self));
+        var _str = qtc.QMimeType_Name(@ptrCast(self));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qmimetype.Name: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -61,7 +61,7 @@ pub const qmimetype = struct {
     ///
     /// ``` self: QtC.QMimeType, allocator: std.mem.Allocator ```
     pub fn Comment(self: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QMimeType_Comment(@ptrCast(self));
+        var _str = qtc.QMimeType_Comment(@ptrCast(self));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qmimetype.Comment: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -72,7 +72,7 @@ pub const qmimetype = struct {
     ///
     /// ``` self: QtC.QMimeType, allocator: std.mem.Allocator ```
     pub fn GenericIconName(self: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QMimeType_GenericIconName(@ptrCast(self));
+        var _str = qtc.QMimeType_GenericIconName(@ptrCast(self));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qmimetype.GenericIconName: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -83,7 +83,7 @@ pub const qmimetype = struct {
     ///
     /// ``` self: QtC.QMimeType, allocator: std.mem.Allocator ```
     pub fn IconName(self: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QMimeType_IconName(@ptrCast(self));
+        var _str = qtc.QMimeType_IconName(@ptrCast(self));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qmimetype.IconName: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -204,7 +204,7 @@ pub const qmimetype = struct {
     ///
     /// ``` self: QtC.QMimeType, allocator: std.mem.Allocator ```
     pub fn PreferredSuffix(self: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QMimeType_PreferredSuffix(@ptrCast(self));
+        var _str = qtc.QMimeType_PreferredSuffix(@ptrCast(self));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qmimetype.PreferredSuffix: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -226,7 +226,7 @@ pub const qmimetype = struct {
     ///
     /// ``` self: QtC.QMimeType, allocator: std.mem.Allocator ```
     pub fn FilterString(self: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QMimeType_FilterString(@ptrCast(self));
+        var _str = qtc.QMimeType_FilterString(@ptrCast(self));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qmimetype.FilterString: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);

@@ -173,7 +173,7 @@ pub const qfontdatabase = struct {
     ///
     /// ``` font: QtC.QFont, allocator: std.mem.Allocator ```
     pub fn StyleString(font: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QFontDatabase_StyleString(@ptrCast(font));
+        var _str = qtc.QFontDatabase_StyleString(@ptrCast(font));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qfontdatabase.StyleString: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -184,7 +184,7 @@ pub const qfontdatabase = struct {
     ///
     /// ``` fontInfo: QtC.QFontInfo, allocator: std.mem.Allocator ```
     pub fn StyleString2(fontInfo: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QFontDatabase_StyleString2(@ptrCast(fontInfo));
+        var _str = qtc.QFontDatabase_StyleString2(@ptrCast(fontInfo));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qfontdatabase.StyleString2: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -321,7 +321,7 @@ pub const qfontdatabase = struct {
     ///
     /// ``` writingSystem: qfontdatabase_enums.WritingSystem, allocator: std.mem.Allocator ```
     pub fn WritingSystemName(writingSystem: i32, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QFontDatabase_WritingSystemName(@intCast(writingSystem));
+        var _str = qtc.QFontDatabase_WritingSystemName(@intCast(writingSystem));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qfontdatabase.WritingSystemName: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -332,7 +332,7 @@ pub const qfontdatabase = struct {
     ///
     /// ``` writingSystem: qfontdatabase_enums.WritingSystem, allocator: std.mem.Allocator ```
     pub fn WritingSystemSample(writingSystem: i32, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QFontDatabase_WritingSystemSample(@intCast(writingSystem));
+        var _str = qtc.QFontDatabase_WritingSystemSample(@intCast(writingSystem));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qfontdatabase.WritingSystemSample: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);

@@ -41,7 +41,7 @@ pub const qtemporarydir = struct {
     ///
     /// ``` self: QtC.QTemporaryDir, allocator: std.mem.Allocator ```
     pub fn ErrorString(self: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QTemporaryDir_ErrorString(@ptrCast(self));
+        var _str = qtc.QTemporaryDir_ErrorString(@ptrCast(self));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qtemporarydir.ErrorString: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -73,7 +73,7 @@ pub const qtemporarydir = struct {
     ///
     /// ``` self: QtC.QTemporaryDir, allocator: std.mem.Allocator ```
     pub fn Path(self: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QTemporaryDir_Path(@ptrCast(self));
+        var _str = qtc.QTemporaryDir_Path(@ptrCast(self));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qtemporarydir.Path: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -88,7 +88,7 @@ pub const qtemporarydir = struct {
             .len = fileName.len,
             .data = fileName.ptr,
         };
-        const _str = qtc.QTemporaryDir_FilePath(@ptrCast(self), fileName_str);
+        var _str = qtc.QTemporaryDir_FilePath(@ptrCast(self), fileName_str);
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qtemporarydir.FilePath: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);

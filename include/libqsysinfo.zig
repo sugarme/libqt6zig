@@ -36,7 +36,7 @@ pub const qsysinfo = struct {
     ///
     /// ``` allocator: std.mem.Allocator ```
     pub fn BuildCpuArchitecture(allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QSysInfo_BuildCpuArchitecture();
+        var _str = qtc.QSysInfo_BuildCpuArchitecture();
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qsysinfo.BuildCpuArchitecture: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -47,7 +47,7 @@ pub const qsysinfo = struct {
     ///
     /// ``` allocator: std.mem.Allocator ```
     pub fn CurrentCpuArchitecture(allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QSysInfo_CurrentCpuArchitecture();
+        var _str = qtc.QSysInfo_CurrentCpuArchitecture();
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qsysinfo.CurrentCpuArchitecture: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -58,7 +58,7 @@ pub const qsysinfo = struct {
     ///
     /// ``` allocator: std.mem.Allocator ```
     pub fn BuildAbi(allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QSysInfo_BuildAbi();
+        var _str = qtc.QSysInfo_BuildAbi();
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qsysinfo.BuildAbi: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -69,7 +69,7 @@ pub const qsysinfo = struct {
     ///
     /// ``` allocator: std.mem.Allocator ```
     pub fn KernelType(allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QSysInfo_KernelType();
+        var _str = qtc.QSysInfo_KernelType();
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qsysinfo.KernelType: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -80,7 +80,7 @@ pub const qsysinfo = struct {
     ///
     /// ``` allocator: std.mem.Allocator ```
     pub fn KernelVersion(allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QSysInfo_KernelVersion();
+        var _str = qtc.QSysInfo_KernelVersion();
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qsysinfo.KernelVersion: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -91,7 +91,7 @@ pub const qsysinfo = struct {
     ///
     /// ``` allocator: std.mem.Allocator ```
     pub fn ProductType(allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QSysInfo_ProductType();
+        var _str = qtc.QSysInfo_ProductType();
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qsysinfo.ProductType: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -102,7 +102,7 @@ pub const qsysinfo = struct {
     ///
     /// ``` allocator: std.mem.Allocator ```
     pub fn ProductVersion(allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QSysInfo_ProductVersion();
+        var _str = qtc.QSysInfo_ProductVersion();
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qsysinfo.ProductVersion: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -113,7 +113,7 @@ pub const qsysinfo = struct {
     ///
     /// ``` allocator: std.mem.Allocator ```
     pub fn PrettyProductName(allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QSysInfo_PrettyProductName();
+        var _str = qtc.QSysInfo_PrettyProductName();
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qsysinfo.PrettyProductName: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -124,7 +124,7 @@ pub const qsysinfo = struct {
     ///
     /// ``` allocator: std.mem.Allocator ```
     pub fn MachineHostName(allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QSysInfo_MachineHostName();
+        var _str = qtc.QSysInfo_MachineHostName();
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qsysinfo.MachineHostName: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);

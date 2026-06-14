@@ -211,7 +211,7 @@ pub const qgraphicsitem = struct {
     ///
     /// ``` self: QtC.QGraphicsItem, allocator: std.mem.Allocator ```
     pub fn ToolTip(self: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QGraphicsItem_ToolTip(@ptrCast(self));
+        var _str = qtc.QGraphicsItem_ToolTip(@ptrCast(self));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qgraphicsitem.ToolTip: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -2256,7 +2256,7 @@ pub const qgraphicsobject = struct {
     /// ``` s: []const u8, allocator: std.mem.Allocator ```
     pub fn Tr(s: []const u8, allocator: std.mem.Allocator) []const u8 {
         const s_Cstring = s.ptr;
-        const _str = qtc.QGraphicsObject_Tr(s_Cstring);
+        var _str = qtc.QGraphicsObject_Tr(s_Cstring);
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qgraphicsobject.Tr: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -2501,7 +2501,7 @@ pub const qgraphicsobject = struct {
     pub fn Tr2(s: []const u8, c: []const u8, allocator: std.mem.Allocator) []const u8 {
         const s_Cstring = s.ptr;
         const c_Cstring = c.ptr;
-        const _str = qtc.QGraphicsObject_Tr2(s_Cstring, c_Cstring);
+        var _str = qtc.QGraphicsObject_Tr2(s_Cstring, c_Cstring);
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qgraphicsobject.Tr2: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -2514,7 +2514,7 @@ pub const qgraphicsobject = struct {
     pub fn Tr3(s: []const u8, c: []const u8, n: i32, allocator: std.mem.Allocator) []const u8 {
         const s_Cstring = s.ptr;
         const c_Cstring = c.ptr;
-        const _str = qtc.QGraphicsObject_Tr3(s_Cstring, c_Cstring, @intCast(n));
+        var _str = qtc.QGraphicsObject_Tr3(s_Cstring, c_Cstring, @intCast(n));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qgraphicsobject.Tr3: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -2534,7 +2534,7 @@ pub const qgraphicsobject = struct {
     ///
     /// ``` self: QtC.QGraphicsObject, allocator: std.mem.Allocator ```
     pub fn ObjectName(self: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QObject_ObjectName(@ptrCast(self));
+        var _str = qtc.QObject_ObjectName(@ptrCast(self));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qgraphicsobject.ObjectName: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -3147,7 +3147,7 @@ pub const qgraphicsobject = struct {
     ///
     /// ``` self: QtC.QGraphicsObject, allocator: std.mem.Allocator ```
     pub fn ToolTip(self: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QGraphicsItem_ToolTip(@ptrCast(self));
+        var _str = qtc.QGraphicsItem_ToolTip(@ptrCast(self));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qgraphicsobject.ToolTip: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -6375,7 +6375,7 @@ pub const qabstractgraphicsshapeitem = struct {
     ///
     /// ``` self: QtC.QAbstractGraphicsShapeItem, allocator: std.mem.Allocator ```
     pub fn ToolTip(self: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QGraphicsItem_ToolTip(@ptrCast(self));
+        var _str = qtc.QGraphicsItem_ToolTip(@ptrCast(self));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qabstractgraphicsshapeitem.ToolTip: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -9463,7 +9463,7 @@ pub const qgraphicspathitem = struct {
     ///
     /// ``` self: QtC.QGraphicsPathItem, allocator: std.mem.Allocator ```
     pub fn ToolTip(self: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QGraphicsItem_ToolTip(@ptrCast(self));
+        var _str = qtc.QGraphicsItem_ToolTip(@ptrCast(self));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qgraphicspathitem.ToolTip: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -12308,7 +12308,7 @@ pub const qgraphicsrectitem = struct {
     ///
     /// ``` self: QtC.QGraphicsRectItem, allocator: std.mem.Allocator ```
     pub fn ToolTip(self: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QGraphicsItem_ToolTip(@ptrCast(self));
+        var _str = qtc.QGraphicsItem_ToolTip(@ptrCast(self));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qgraphicsrectitem.ToolTip: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -15181,7 +15181,7 @@ pub const qgraphicsellipseitem = struct {
     ///
     /// ``` self: QtC.QGraphicsEllipseItem, allocator: std.mem.Allocator ```
     pub fn ToolTip(self: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QGraphicsItem_ToolTip(@ptrCast(self));
+        var _str = qtc.QGraphicsItem_ToolTip(@ptrCast(self));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qgraphicsellipseitem.ToolTip: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -17993,7 +17993,7 @@ pub const qgraphicspolygonitem = struct {
     ///
     /// ``` self: QtC.QGraphicsPolygonItem, allocator: std.mem.Allocator ```
     pub fn ToolTip(self: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QGraphicsItem_ToolTip(@ptrCast(self));
+        var _str = qtc.QGraphicsItem_ToolTip(@ptrCast(self));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qgraphicspolygonitem.ToolTip: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -20816,7 +20816,7 @@ pub const qgraphicslineitem = struct {
     ///
     /// ``` self: QtC.QGraphicsLineItem, allocator: std.mem.Allocator ```
     pub fn ToolTip(self: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QGraphicsItem_ToolTip(@ptrCast(self));
+        var _str = qtc.QGraphicsItem_ToolTip(@ptrCast(self));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qgraphicslineitem.ToolTip: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -23657,7 +23657,7 @@ pub const qgraphicspixmapitem = struct {
     ///
     /// ``` self: QtC.QGraphicsPixmapItem, allocator: std.mem.Allocator ```
     pub fn ToolTip(self: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QGraphicsItem_ToolTip(@ptrCast(self));
+        var _str = qtc.QGraphicsItem_ToolTip(@ptrCast(self));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qgraphicspixmapitem.ToolTip: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -25986,7 +25986,7 @@ pub const qgraphicstextitem = struct {
     /// ``` s: []const u8, allocator: std.mem.Allocator ```
     pub fn Tr(s: []const u8, allocator: std.mem.Allocator) []const u8 {
         const s_Cstring = s.ptr;
-        const _str = qtc.QGraphicsTextItem_Tr(s_Cstring);
+        var _str = qtc.QGraphicsTextItem_Tr(s_Cstring);
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qgraphicstextitem.Tr: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -25997,7 +25997,7 @@ pub const qgraphicstextitem = struct {
     ///
     /// ``` self: QtC.QGraphicsTextItem, allocator: std.mem.Allocator ```
     pub fn ToHtml(self: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QGraphicsTextItem_ToHtml(@ptrCast(self));
+        var _str = qtc.QGraphicsTextItem_ToHtml(@ptrCast(self));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qgraphicstextitem.ToHtml: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -26019,7 +26019,7 @@ pub const qgraphicstextitem = struct {
     ///
     /// ``` self: QtC.QGraphicsTextItem, allocator: std.mem.Allocator ```
     pub fn ToPlainText(self: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QGraphicsTextItem_ToPlainText(@ptrCast(self));
+        var _str = qtc.QGraphicsTextItem_ToPlainText(@ptrCast(self));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qgraphicstextitem.ToPlainText: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -26925,7 +26925,7 @@ pub const qgraphicstextitem = struct {
     pub fn Tr2(s: []const u8, c: []const u8, allocator: std.mem.Allocator) []const u8 {
         const s_Cstring = s.ptr;
         const c_Cstring = c.ptr;
-        const _str = qtc.QGraphicsTextItem_Tr2(s_Cstring, c_Cstring);
+        var _str = qtc.QGraphicsTextItem_Tr2(s_Cstring, c_Cstring);
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qgraphicstextitem.Tr2: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -26938,7 +26938,7 @@ pub const qgraphicstextitem = struct {
     pub fn Tr3(s: []const u8, c: []const u8, n: i32, allocator: std.mem.Allocator) []const u8 {
         const s_Cstring = s.ptr;
         const c_Cstring = c.ptr;
-        const _str = qtc.QGraphicsTextItem_Tr3(s_Cstring, c_Cstring, @intCast(n));
+        var _str = qtc.QGraphicsTextItem_Tr3(s_Cstring, c_Cstring, @intCast(n));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qgraphicstextitem.Tr3: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -27194,7 +27194,7 @@ pub const qgraphicstextitem = struct {
     ///
     /// ``` self: QtC.QGraphicsTextItem, allocator: std.mem.Allocator ```
     pub fn ObjectName(self: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QObject_ObjectName(@ptrCast(self));
+        var _str = qtc.QObject_ObjectName(@ptrCast(self));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qgraphicstextitem.ObjectName: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -27807,7 +27807,7 @@ pub const qgraphicstextitem = struct {
     ///
     /// ``` self: QtC.QGraphicsTextItem, allocator: std.mem.Allocator ```
     pub fn ToolTip(self: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QGraphicsItem_ToolTip(@ptrCast(self));
+        var _str = qtc.QGraphicsItem_ToolTip(@ptrCast(self));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qgraphicstextitem.ToolTip: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -29863,7 +29863,7 @@ pub const qgraphicssimpletextitem = struct {
     ///
     /// ``` self: QtC.QGraphicsSimpleTextItem, allocator: std.mem.Allocator ```
     pub fn Text(self: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QGraphicsSimpleTextItem_Text(@ptrCast(self));
+        var _str = qtc.QGraphicsSimpleTextItem_Text(@ptrCast(self));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qgraphicssimpletextitem.Text: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -30412,7 +30412,7 @@ pub const qgraphicssimpletextitem = struct {
     ///
     /// ``` self: QtC.QGraphicsSimpleTextItem, allocator: std.mem.Allocator ```
     pub fn ToolTip(self: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QGraphicsItem_ToolTip(@ptrCast(self));
+        var _str = qtc.QGraphicsItem_ToolTip(@ptrCast(self));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qgraphicssimpletextitem.ToolTip: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -33061,7 +33061,7 @@ pub const qgraphicsitemgroup = struct {
     ///
     /// ``` self: QtC.QGraphicsItemGroup, allocator: std.mem.Allocator ```
     pub fn ToolTip(self: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QGraphicsItem_ToolTip(@ptrCast(self));
+        var _str = qtc.QGraphicsItem_ToolTip(@ptrCast(self));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qgraphicsitemgroup.ToolTip: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);

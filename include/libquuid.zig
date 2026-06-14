@@ -96,7 +96,7 @@ pub const quuid = struct {
     ///
     /// ``` self: QtC.QUuid, allocator: std.mem.Allocator ```
     pub fn ToString(self: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QUuid_ToString(@ptrCast(self));
+        var _str = qtc.QUuid_ToString(@ptrCast(self));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("quuid.ToString: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -238,7 +238,7 @@ pub const quuid = struct {
     ///
     /// ``` self: QtC.QUuid, mode: quuid_enums.StringFormat, allocator: std.mem.Allocator ```
     pub fn ToString1(self: ?*anyopaque, mode: i32, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QUuid_ToString1(@ptrCast(self), @intCast(mode));
+        var _str = qtc.QUuid_ToString1(@ptrCast(self), @intCast(mode));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("quuid.ToString1: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -300,7 +300,7 @@ pub const quuid__id128bytes = struct {
     ///
     /// ``` self: QtC.QUuid__Id128Bytes, allocator: std.mem.Allocator ```
     pub fn ToQByteArrayView(self: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QUuid__Id128Bytes_ToQByteArrayView(@ptrCast(self));
+        var _str = qtc.QUuid__Id128Bytes_ToQByteArrayView(@ptrCast(self));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("quuid::id128bytes.ToQByteArrayView: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);

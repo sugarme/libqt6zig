@@ -216,7 +216,7 @@ pub const qtimezone = struct {
     ///
     /// ``` self: QtC.QTimeZone, allocator: std.mem.Allocator ```
     pub fn Comment(self: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QTimeZone_Comment(@ptrCast(self));
+        var _str = qtc.QTimeZone_Comment(@ptrCast(self));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qtimezone.Comment: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -227,7 +227,7 @@ pub const qtimezone = struct {
     ///
     /// ``` self: QtC.QTimeZone, atDateTime: QtC.QDateTime, allocator: std.mem.Allocator ```
     pub fn DisplayName(self: ?*anyopaque, atDateTime: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QTimeZone_DisplayName(@ptrCast(self), @ptrCast(atDateTime));
+        var _str = qtc.QTimeZone_DisplayName(@ptrCast(self), @ptrCast(atDateTime));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qtimezone.DisplayName: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -238,7 +238,7 @@ pub const qtimezone = struct {
     ///
     /// ``` self: QtC.QTimeZone, timeType: qtimezone_enums.TimeType, allocator: std.mem.Allocator ```
     pub fn DisplayName2(self: ?*anyopaque, timeType: i32, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QTimeZone_DisplayName2(@ptrCast(self), @intCast(timeType));
+        var _str = qtc.QTimeZone_DisplayName2(@ptrCast(self), @intCast(timeType));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qtimezone.DisplayName2: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -249,7 +249,7 @@ pub const qtimezone = struct {
     ///
     /// ``` self: QtC.QTimeZone, atDateTime: QtC.QDateTime, allocator: std.mem.Allocator ```
     pub fn Abbreviation(self: ?*anyopaque, atDateTime: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QTimeZone_Abbreviation(@ptrCast(self), @ptrCast(atDateTime));
+        var _str = qtc.QTimeZone_Abbreviation(@ptrCast(self), @ptrCast(atDateTime));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qtimezone.Abbreviation: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -534,7 +534,7 @@ pub const qtimezone = struct {
     ///
     /// ``` self: QtC.QTimeZone, atDateTime: QtC.QDateTime, nameType: qtimezone_enums.NameType, allocator: std.mem.Allocator ```
     pub fn DisplayName22(self: ?*anyopaque, atDateTime: ?*anyopaque, nameType: i32, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QTimeZone_DisplayName22(@ptrCast(self), @ptrCast(atDateTime), @intCast(nameType));
+        var _str = qtc.QTimeZone_DisplayName22(@ptrCast(self), @ptrCast(atDateTime), @intCast(nameType));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qtimezone.DisplayName22: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -545,7 +545,7 @@ pub const qtimezone = struct {
     ///
     /// ``` self: QtC.QTimeZone, atDateTime: QtC.QDateTime, nameType: qtimezone_enums.NameType, locale: QtC.QLocale, allocator: std.mem.Allocator ```
     pub fn DisplayName3(self: ?*anyopaque, atDateTime: ?*anyopaque, nameType: i32, locale: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QTimeZone_DisplayName3(@ptrCast(self), @ptrCast(atDateTime), @intCast(nameType), @ptrCast(locale));
+        var _str = qtc.QTimeZone_DisplayName3(@ptrCast(self), @ptrCast(atDateTime), @intCast(nameType), @ptrCast(locale));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qtimezone.DisplayName3: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -556,7 +556,7 @@ pub const qtimezone = struct {
     ///
     /// ``` self: QtC.QTimeZone, timeType: qtimezone_enums.TimeType, nameType: qtimezone_enums.NameType, allocator: std.mem.Allocator ```
     pub fn DisplayName23(self: ?*anyopaque, timeType: i32, nameType: i32, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QTimeZone_DisplayName23(@ptrCast(self), @intCast(timeType), @intCast(nameType));
+        var _str = qtc.QTimeZone_DisplayName23(@ptrCast(self), @intCast(timeType), @intCast(nameType));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qtimezone.DisplayName23: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -567,7 +567,7 @@ pub const qtimezone = struct {
     ///
     /// ``` self: QtC.QTimeZone, timeType: qtimezone_enums.TimeType, nameType: qtimezone_enums.NameType, locale: QtC.QLocale, allocator: std.mem.Allocator ```
     pub fn DisplayName32(self: ?*anyopaque, timeType: i32, nameType: i32, locale: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QTimeZone_DisplayName32(@ptrCast(self), @intCast(timeType), @intCast(nameType), @ptrCast(locale));
+        var _str = qtc.QTimeZone_DisplayName32(@ptrCast(self), @intCast(timeType), @intCast(nameType), @ptrCast(locale));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qtimezone.DisplayName32: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -604,7 +604,7 @@ pub const qtimezone__offsetdata = struct {
     ///
     /// ``` self: QtC.QTimeZone__OffsetData, allocator: std.mem.Allocator ```
     pub fn Abbreviation(self: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const abbreviation_str = qtc.QTimeZone__OffsetData_Abbreviation(@ptrCast(self));
+        var abbreviation_str = qtc.QTimeZone__OffsetData_Abbreviation(@ptrCast(self));
         defer qtc.libqt_string_free(&abbreviation_str);
         const abbreviation_ret = allocator.alloc(u8, abbreviation_str.len) catch @panic("qtimezone::offsetdata.Abbreviation: Memory allocation failed");
         @memcpy(abbreviation_ret, abbreviation_str.data[0..abbreviation_str.len]);

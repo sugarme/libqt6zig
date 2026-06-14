@@ -59,7 +59,7 @@ pub const qsqldriver = struct {
     /// ``` s: []const u8, allocator: std.mem.Allocator ```
     pub fn Tr(s: []const u8, allocator: std.mem.Allocator) []const u8 {
         const s_Cstring = s.ptr;
-        const _str = qtc.QSqlDriver_Tr(s_Cstring);
+        var _str = qtc.QSqlDriver_Tr(s_Cstring);
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qsqldriver.Tr: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -298,7 +298,7 @@ pub const qsqldriver = struct {
     ///
     /// ``` self: QtC.QSqlDriver, field: QtC.QSqlField, trimStrings: bool, allocator: std.mem.Allocator ```
     pub fn FormatValue(self: ?*anyopaque, field: ?*anyopaque, trimStrings: bool, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QSqlDriver_FormatValue(@ptrCast(self), @ptrCast(field), trimStrings);
+        var _str = qtc.QSqlDriver_FormatValue(@ptrCast(self), @ptrCast(field), trimStrings);
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qsqldriver.FormatValue: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -320,7 +320,7 @@ pub const qsqldriver = struct {
     ///
     /// ``` self: QtC.QSqlDriver, field: QtC.QSqlField, trimStrings: bool, allocator: std.mem.Allocator ```
     pub fn QBaseFormatValue(self: ?*anyopaque, field: ?*anyopaque, trimStrings: bool, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QSqlDriver_QBaseFormatValue(@ptrCast(self), @ptrCast(field), trimStrings);
+        var _str = qtc.QSqlDriver_QBaseFormatValue(@ptrCast(self), @ptrCast(field), trimStrings);
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qsqldriver.FormatValue: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -335,7 +335,7 @@ pub const qsqldriver = struct {
             .len = identifier.len,
             .data = identifier.ptr,
         };
-        const _str = qtc.QSqlDriver_EscapeIdentifier(@ptrCast(self), identifier_str, @intCast(typeVal));
+        var _str = qtc.QSqlDriver_EscapeIdentifier(@ptrCast(self), identifier_str, @intCast(typeVal));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qsqldriver.EscapeIdentifier: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -361,7 +361,7 @@ pub const qsqldriver = struct {
             .len = identifier.len,
             .data = identifier.ptr,
         };
-        const _str = qtc.QSqlDriver_QBaseEscapeIdentifier(@ptrCast(self), identifier_str, @intCast(typeVal));
+        var _str = qtc.QSqlDriver_QBaseEscapeIdentifier(@ptrCast(self), identifier_str, @intCast(typeVal));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qsqldriver.EscapeIdentifier: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -376,7 +376,7 @@ pub const qsqldriver = struct {
             .len = tableName.len,
             .data = tableName.ptr,
         };
-        const _str = qtc.QSqlDriver_SqlStatement(@ptrCast(self), @intCast(typeVal), tableName_str, @ptrCast(rec), preparedStatement);
+        var _str = qtc.QSqlDriver_SqlStatement(@ptrCast(self), @intCast(typeVal), tableName_str, @ptrCast(rec), preparedStatement);
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qsqldriver.SqlStatement: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -402,7 +402,7 @@ pub const qsqldriver = struct {
             .len = tableName.len,
             .data = tableName.ptr,
         };
-        const _str = qtc.QSqlDriver_QBaseSqlStatement(@ptrCast(self), @intCast(typeVal), tableName_str, @ptrCast(rec), preparedStatement);
+        var _str = qtc.QSqlDriver_QBaseSqlStatement(@ptrCast(self), @intCast(typeVal), tableName_str, @ptrCast(rec), preparedStatement);
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qsqldriver.SqlStatement: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -743,7 +743,7 @@ pub const qsqldriver = struct {
             .len = identifier.len,
             .data = identifier.ptr,
         };
-        const _str = qtc.QSqlDriver_StripDelimiters(@ptrCast(self), identifier_str, @intCast(typeVal));
+        var _str = qtc.QSqlDriver_StripDelimiters(@ptrCast(self), identifier_str, @intCast(typeVal));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qsqldriver.StripDelimiters: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -769,7 +769,7 @@ pub const qsqldriver = struct {
             .len = identifier.len,
             .data = identifier.ptr,
         };
-        const _str = qtc.QSqlDriver_QBaseStripDelimiters(@ptrCast(self), identifier_str, @intCast(typeVal));
+        var _str = qtc.QSqlDriver_QBaseStripDelimiters(@ptrCast(self), identifier_str, @intCast(typeVal));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qsqldriver.StripDelimiters: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -950,7 +950,7 @@ pub const qsqldriver = struct {
     pub fn Tr2(s: []const u8, c: []const u8, allocator: std.mem.Allocator) []const u8 {
         const s_Cstring = s.ptr;
         const c_Cstring = c.ptr;
-        const _str = qtc.QSqlDriver_Tr2(s_Cstring, c_Cstring);
+        var _str = qtc.QSqlDriver_Tr2(s_Cstring, c_Cstring);
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qsqldriver.Tr2: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -963,7 +963,7 @@ pub const qsqldriver = struct {
     pub fn Tr3(s: []const u8, c: []const u8, n: i32, allocator: std.mem.Allocator) []const u8 {
         const s_Cstring = s.ptr;
         const c_Cstring = c.ptr;
-        const _str = qtc.QSqlDriver_Tr3(s_Cstring, c_Cstring, @intCast(n));
+        var _str = qtc.QSqlDriver_Tr3(s_Cstring, c_Cstring, @intCast(n));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qsqldriver.Tr3: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -976,7 +976,7 @@ pub const qsqldriver = struct {
     ///
     /// ``` self: QtC.QSqlDriver, allocator: std.mem.Allocator ```
     pub fn ObjectName(self: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QObject_ObjectName(@ptrCast(self));
+        var _str = qtc.QObject_ObjectName(@ptrCast(self));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qsqldriver.ObjectName: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);

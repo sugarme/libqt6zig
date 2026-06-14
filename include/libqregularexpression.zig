@@ -77,7 +77,7 @@ pub const qregularexpression = struct {
     ///
     /// ``` self: QtC.QRegularExpression, allocator: std.mem.Allocator ```
     pub fn Pattern(self: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QRegularExpression_Pattern(@ptrCast(self));
+        var _str = qtc.QRegularExpression_Pattern(@ptrCast(self));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qregularexpression.Pattern: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -113,7 +113,7 @@ pub const qregularexpression = struct {
     ///
     /// ``` self: QtC.QRegularExpression, allocator: std.mem.Allocator ```
     pub fn ErrorString(self: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QRegularExpression_ErrorString(@ptrCast(self));
+        var _str = qtc.QRegularExpression_ErrorString(@ptrCast(self));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qregularexpression.ErrorString: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -186,7 +186,7 @@ pub const qregularexpression = struct {
             .len = str.len,
             .data = str.ptr,
         };
-        const _str = qtc.QRegularExpression_Escape(str_str);
+        var _str = qtc.QRegularExpression_Escape(str_str);
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qregularexpression.Escape: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -201,7 +201,7 @@ pub const qregularexpression = struct {
             .len = str.len,
             .data = str.ptr,
         };
-        const _str = qtc.QRegularExpression_WildcardToRegularExpression(str_str);
+        var _str = qtc.QRegularExpression_WildcardToRegularExpression(str_str);
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qregularexpression.WildcardToRegularExpression: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -216,7 +216,7 @@ pub const qregularexpression = struct {
             .len = expression.len,
             .data = expression.ptr,
         };
-        const _str = qtc.QRegularExpression_AnchoredPattern(expression_str);
+        var _str = qtc.QRegularExpression_AnchoredPattern(expression_str);
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qregularexpression.AnchoredPattern: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -297,7 +297,7 @@ pub const qregularexpression = struct {
             .len = str.len,
             .data = str.ptr,
         };
-        const _str = qtc.QRegularExpression_WildcardToRegularExpression22(str_str, @intCast(options));
+        var _str = qtc.QRegularExpression_WildcardToRegularExpression22(str_str, @intCast(options));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qregularexpression.WildcardToRegularExpression22: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -419,7 +419,7 @@ pub const qregularexpressionmatch = struct {
     ///
     /// ``` self: QtC.QRegularExpressionMatch, allocator: std.mem.Allocator ```
     pub fn Captured(self: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QRegularExpressionMatch_Captured(@ptrCast(self));
+        var _str = qtc.QRegularExpressionMatch_Captured(@ptrCast(self));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qregularexpressionmatch.Captured: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -434,7 +434,7 @@ pub const qregularexpressionmatch = struct {
             .len = name.len,
             .data = name.ptr,
         };
-        const _str = qtc.QRegularExpressionMatch_Captured2(@ptrCast(self), name_str);
+        var _str = qtc.QRegularExpressionMatch_Captured2(@ptrCast(self), name_str);
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qregularexpressionmatch.Captured2: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -521,7 +521,7 @@ pub const qregularexpressionmatch = struct {
     ///
     /// ``` self: QtC.QRegularExpressionMatch, nth: i32, allocator: std.mem.Allocator ```
     pub fn Captured1(self: ?*anyopaque, nth: i32, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QRegularExpressionMatch_Captured1(@ptrCast(self), @intCast(nth));
+        var _str = qtc.QRegularExpressionMatch_Captured1(@ptrCast(self), @intCast(nth));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qregularexpressionmatch.Captured1: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);

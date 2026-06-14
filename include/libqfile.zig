@@ -83,7 +83,7 @@ pub const qfile = struct {
     /// ``` s: []const u8, allocator: std.mem.Allocator ```
     pub fn Tr(s: []const u8, allocator: std.mem.Allocator) []const u8 {
         const s_Cstring = s.ptr;
-        const _str = qtc.QFile_Tr(s_Cstring);
+        var _str = qtc.QFile_Tr(s_Cstring);
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qfile.Tr: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -94,7 +94,7 @@ pub const qfile = struct {
     ///
     /// ``` self: QtC.QFile, allocator: std.mem.Allocator ```
     pub fn FileName(self: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QFile_FileName(@ptrCast(self));
+        var _str = qtc.QFile_FileName(@ptrCast(self));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qfile.FileName: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -116,7 +116,7 @@ pub const qfile = struct {
     ///
     /// ``` self: QtC.QFile, allocator: std.mem.Allocator ```
     pub fn QBaseFileName(self: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QFile_QBaseFileName(@ptrCast(self));
+        var _str = qtc.QFile_QBaseFileName(@ptrCast(self));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qfile.FileName: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -157,7 +157,7 @@ pub const qfile = struct {
             .len = localFileName.len,
             .data = localFileName.ptr,
         };
-        const _str = qtc.QFile_DecodeName(localFileName_str);
+        var _str = qtc.QFile_DecodeName(localFileName_str);
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qfile.DecodeName: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -169,7 +169,7 @@ pub const qfile = struct {
     /// ``` localFileName: []const u8, allocator: std.mem.Allocator ```
     pub fn DecodeName2(localFileName: []const u8, allocator: std.mem.Allocator) []const u8 {
         const localFileName_Cstring = localFileName.ptr;
-        const _str = qtc.QFile_DecodeName2(localFileName_Cstring);
+        var _str = qtc.QFile_DecodeName2(localFileName_Cstring);
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qfile.DecodeName2: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -198,7 +198,7 @@ pub const qfile = struct {
     ///
     /// ``` self: QtC.QFile, allocator: std.mem.Allocator ```
     pub fn SymLinkTarget(self: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QFile_SymLinkTarget(@ptrCast(self));
+        var _str = qtc.QFile_SymLinkTarget(@ptrCast(self));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qfile.SymLinkTarget: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -213,7 +213,7 @@ pub const qfile = struct {
             .len = fileName.len,
             .data = fileName.ptr,
         };
-        const _str = qtc.QFile_SymLinkTarget2(fileName_str);
+        var _str = qtc.QFile_SymLinkTarget2(fileName_str);
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qfile.SymLinkTarget2: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -518,7 +518,7 @@ pub const qfile = struct {
     pub fn Tr2(s: []const u8, c: []const u8, allocator: std.mem.Allocator) []const u8 {
         const s_Cstring = s.ptr;
         const c_Cstring = c.ptr;
-        const _str = qtc.QFile_Tr2(s_Cstring, c_Cstring);
+        var _str = qtc.QFile_Tr2(s_Cstring, c_Cstring);
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qfile.Tr2: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -531,7 +531,7 @@ pub const qfile = struct {
     pub fn Tr3(s: []const u8, c: []const u8, n: i32, allocator: std.mem.Allocator) []const u8 {
         const s_Cstring = s.ptr;
         const c_Cstring = c.ptr;
-        const _str = qtc.QFile_Tr3(s_Cstring, c_Cstring, @intCast(n));
+        var _str = qtc.QFile_Tr3(s_Cstring, c_Cstring, @intCast(n));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qfile.Tr3: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -932,7 +932,7 @@ pub const qfile = struct {
     ///
     /// ``` self: QtC.QFile, allocator: std.mem.Allocator ```
     pub fn ErrorString(self: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QIODevice_ErrorString(@ptrCast(self));
+        var _str = qtc.QIODevice_ErrorString(@ptrCast(self));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qfile.ErrorString: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -1066,7 +1066,7 @@ pub const qfile = struct {
     ///
     /// ``` self: QtC.QFile, allocator: std.mem.Allocator ```
     pub fn ObjectName(self: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QObject_ObjectName(@ptrCast(self));
+        var _str = qtc.QObject_ObjectName(@ptrCast(self));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qfile.ObjectName: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);

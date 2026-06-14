@@ -108,7 +108,7 @@ pub const qrawfont = struct {
     ///
     /// ``` self: QtC.QRawFont, allocator: std.mem.Allocator ```
     pub fn FamilyName(self: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QRawFont_FamilyName(@ptrCast(self));
+        var _str = qtc.QRawFont_FamilyName(@ptrCast(self));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qrawfont.FamilyName: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -119,7 +119,7 @@ pub const qrawfont = struct {
     ///
     /// ``` self: QtC.QRawFont, allocator: std.mem.Allocator ```
     pub fn StyleName(self: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QRawFont_StyleName(@ptrCast(self));
+        var _str = qtc.QRawFont_StyleName(@ptrCast(self));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qrawfont.StyleName: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);

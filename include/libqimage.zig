@@ -889,7 +889,7 @@ pub const qimage = struct {
     ///
     /// ``` self: QtC.QImage, allocator: std.mem.Allocator ```
     pub fn Text(self: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QImage_Text(@ptrCast(self));
+        var _str = qtc.QImage_Text(@ptrCast(self));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qimage.Text: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -1447,7 +1447,7 @@ pub const qimage = struct {
             .len = key.len,
             .data = key.ptr,
         };
-        const _str = qtc.QImage_Text1(@ptrCast(self), key_str);
+        var _str = qtc.QImage_Text1(@ptrCast(self), key_str);
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qimage.Text1: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);

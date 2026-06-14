@@ -68,7 +68,7 @@ pub const qsqltablemodel = struct {
     /// ``` s: []const u8, allocator: std.mem.Allocator ```
     pub fn Tr(s: []const u8, allocator: std.mem.Allocator) []const u8 {
         const s_Cstring = s.ptr;
-        const _str = qtc.QSqlTableModel_Tr(s_Cstring);
+        var _str = qtc.QSqlTableModel_Tr(s_Cstring);
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qsqltablemodel.Tr: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -112,7 +112,7 @@ pub const qsqltablemodel = struct {
     ///
     /// ``` self: QtC.QSqlTableModel, allocator: std.mem.Allocator ```
     pub fn TableName(self: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QSqlTableModel_TableName(@ptrCast(self));
+        var _str = qtc.QSqlTableModel_TableName(@ptrCast(self));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qsqltablemodel.TableName: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -414,7 +414,7 @@ pub const qsqltablemodel = struct {
     ///
     /// ``` self: QtC.QSqlTableModel, allocator: std.mem.Allocator ```
     pub fn Filter(self: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QSqlTableModel_Filter(@ptrCast(self));
+        var _str = qtc.QSqlTableModel_Filter(@ptrCast(self));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qsqltablemodel.Filter: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -842,7 +842,7 @@ pub const qsqltablemodel = struct {
     ///
     /// ``` self: QtC.QSqlTableModel, allocator: std.mem.Allocator ```
     pub fn OrderByClause(self: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QSqlTableModel_OrderByClause(@ptrCast(self));
+        var _str = qtc.QSqlTableModel_OrderByClause(@ptrCast(self));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qsqltablemodel.OrderByClause: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -864,7 +864,7 @@ pub const qsqltablemodel = struct {
     ///
     /// ``` self: QtC.QSqlTableModel, allocator: std.mem.Allocator ```
     pub fn QBaseOrderByClause(self: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QSqlTableModel_QBaseOrderByClause(@ptrCast(self));
+        var _str = qtc.QSqlTableModel_QBaseOrderByClause(@ptrCast(self));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qsqltablemodel.OrderByClause: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -875,7 +875,7 @@ pub const qsqltablemodel = struct {
     ///
     /// ``` self: QtC.QSqlTableModel, allocator: std.mem.Allocator ```
     pub fn SelectStatement(self: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QSqlTableModel_SelectStatement(@ptrCast(self));
+        var _str = qtc.QSqlTableModel_SelectStatement(@ptrCast(self));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qsqltablemodel.SelectStatement: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -897,7 +897,7 @@ pub const qsqltablemodel = struct {
     ///
     /// ``` self: QtC.QSqlTableModel, allocator: std.mem.Allocator ```
     pub fn QBaseSelectStatement(self: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QSqlTableModel_QBaseSelectStatement(@ptrCast(self));
+        var _str = qtc.QSqlTableModel_QBaseSelectStatement(@ptrCast(self));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qsqltablemodel.SelectStatement: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -985,7 +985,7 @@ pub const qsqltablemodel = struct {
     pub fn Tr2(s: []const u8, c: []const u8, allocator: std.mem.Allocator) []const u8 {
         const s_Cstring = s.ptr;
         const c_Cstring = c.ptr;
-        const _str = qtc.QSqlTableModel_Tr2(s_Cstring, c_Cstring);
+        var _str = qtc.QSqlTableModel_Tr2(s_Cstring, c_Cstring);
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qsqltablemodel.Tr2: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -998,7 +998,7 @@ pub const qsqltablemodel = struct {
     pub fn Tr3(s: []const u8, c: []const u8, n: i32, allocator: std.mem.Allocator) []const u8 {
         const s_Cstring = s.ptr;
         const c_Cstring = c.ptr;
-        const _str = qtc.QSqlTableModel_Tr3(s_Cstring, c_Cstring, @intCast(n));
+        var _str = qtc.QSqlTableModel_Tr3(s_Cstring, c_Cstring, @intCast(n));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qsqltablemodel.Tr3: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -1443,7 +1443,7 @@ pub const qsqltablemodel = struct {
     ///
     /// ``` self: QtC.QSqlTableModel, allocator: std.mem.Allocator ```
     pub fn ObjectName(self: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QObject_ObjectName(@ptrCast(self));
+        var _str = qtc.QObject_ObjectName(@ptrCast(self));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qsqltablemodel.ObjectName: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);

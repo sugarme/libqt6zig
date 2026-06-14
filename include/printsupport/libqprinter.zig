@@ -108,7 +108,7 @@ pub const qprinter = struct {
     ///
     /// ``` self: QtC.QPrinter, allocator: std.mem.Allocator ```
     pub fn PrinterName(self: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QPrinter_PrinterName(@ptrCast(self));
+        var _str = qtc.QPrinter_PrinterName(@ptrCast(self));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qprinter.PrinterName: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -137,7 +137,7 @@ pub const qprinter = struct {
     ///
     /// ``` self: QtC.QPrinter, allocator: std.mem.Allocator ```
     pub fn OutputFileName(self: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QPrinter_OutputFileName(@ptrCast(self));
+        var _str = qtc.QPrinter_OutputFileName(@ptrCast(self));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qprinter.OutputFileName: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -159,7 +159,7 @@ pub const qprinter = struct {
     ///
     /// ``` self: QtC.QPrinter, allocator: std.mem.Allocator ```
     pub fn PrintProgram(self: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QPrinter_PrintProgram(@ptrCast(self));
+        var _str = qtc.QPrinter_PrintProgram(@ptrCast(self));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qprinter.PrintProgram: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -181,7 +181,7 @@ pub const qprinter = struct {
     ///
     /// ``` self: QtC.QPrinter, allocator: std.mem.Allocator ```
     pub fn DocName(self: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QPrinter_DocName(@ptrCast(self));
+        var _str = qtc.QPrinter_DocName(@ptrCast(self));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qprinter.DocName: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -203,7 +203,7 @@ pub const qprinter = struct {
     ///
     /// ``` self: QtC.QPrinter, allocator: std.mem.Allocator ```
     pub fn Creator(self: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QPrinter_Creator(@ptrCast(self));
+        var _str = qtc.QPrinter_Creator(@ptrCast(self));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qprinter.Creator: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -381,7 +381,7 @@ pub const qprinter = struct {
     ///
     /// ``` self: QtC.QPrinter, allocator: std.mem.Allocator ```
     pub fn PrinterSelectionOption(self: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QPrinter_PrinterSelectionOption(@ptrCast(self));
+        var _str = qtc.QPrinter_PrinterSelectionOption(@ptrCast(self));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qprinter.PrinterSelectionOption: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);

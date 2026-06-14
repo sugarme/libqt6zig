@@ -243,7 +243,7 @@ pub const qtextformat = struct {
     ///
     /// ``` self: QtC.QTextFormat, propertyId: i32, allocator: std.mem.Allocator ```
     pub fn StringProperty(self: ?*anyopaque, propertyId: i32, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QTextFormat_StringProperty(@ptrCast(self), @intCast(propertyId));
+        var _str = qtc.QTextFormat_StringProperty(@ptrCast(self), @intCast(propertyId));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qtextformat.StringProperty: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -575,7 +575,7 @@ pub const qtextcharformat = struct {
     ///
     /// ``` self: QtC.QTextCharFormat, allocator: std.mem.Allocator ```
     pub fn FontFamily(self: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QTextCharFormat_FontFamily(@ptrCast(self));
+        var _str = qtc.QTextCharFormat_FontFamily(@ptrCast(self));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qtextcharformat.FontFamily: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -935,7 +935,7 @@ pub const qtextcharformat = struct {
     ///
     /// ``` self: QtC.QTextCharFormat, allocator: std.mem.Allocator ```
     pub fn ToolTip(self: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QTextCharFormat_ToolTip(@ptrCast(self));
+        var _str = qtc.QTextCharFormat_ToolTip(@ptrCast(self));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qtextcharformat.ToolTip: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -1013,7 +1013,7 @@ pub const qtextcharformat = struct {
     ///
     /// ``` self: QtC.QTextCharFormat, allocator: std.mem.Allocator ```
     pub fn AnchorHref(self: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QTextCharFormat_AnchorHref(@ptrCast(self));
+        var _str = qtc.QTextCharFormat_AnchorHref(@ptrCast(self));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qtextcharformat.AnchorHref: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -1235,7 +1235,7 @@ pub const qtextcharformat = struct {
     ///
     /// ``` self: QtC.QTextCharFormat, propertyId: i32, allocator: std.mem.Allocator ```
     pub fn StringProperty(self: ?*anyopaque, propertyId: i32, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QTextFormat_StringProperty(@ptrCast(self), @intCast(propertyId));
+        var _str = qtc.QTextFormat_StringProperty(@ptrCast(self), @intCast(propertyId));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qtextcharformat.StringProperty: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -1951,7 +1951,7 @@ pub const qtextblockformat = struct {
     ///
     /// ``` self: QtC.QTextBlockFormat, propertyId: i32, allocator: std.mem.Allocator ```
     pub fn StringProperty(self: ?*anyopaque, propertyId: i32, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QTextFormat_StringProperty(@ptrCast(self), @intCast(propertyId));
+        var _str = qtc.QTextFormat_StringProperty(@ptrCast(self), @intCast(propertyId));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qtextblockformat.StringProperty: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -2369,7 +2369,7 @@ pub const qtextlistformat = struct {
     ///
     /// ``` self: QtC.QTextListFormat, allocator: std.mem.Allocator ```
     pub fn NumberPrefix(self: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QTextListFormat_NumberPrefix(@ptrCast(self));
+        var _str = qtc.QTextListFormat_NumberPrefix(@ptrCast(self));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qtextlistformat.NumberPrefix: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -2391,7 +2391,7 @@ pub const qtextlistformat = struct {
     ///
     /// ``` self: QtC.QTextListFormat, allocator: std.mem.Allocator ```
     pub fn NumberSuffix(self: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QTextListFormat_NumberSuffix(@ptrCast(self));
+        var _str = qtc.QTextListFormat_NumberSuffix(@ptrCast(self));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qtextlistformat.NumberSuffix: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -2544,7 +2544,7 @@ pub const qtextlistformat = struct {
     ///
     /// ``` self: QtC.QTextListFormat, propertyId: i32, allocator: std.mem.Allocator ```
     pub fn StringProperty(self: ?*anyopaque, propertyId: i32, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QTextFormat_StringProperty(@ptrCast(self), @intCast(propertyId));
+        var _str = qtc.QTextFormat_StringProperty(@ptrCast(self), @intCast(propertyId));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qtextlistformat.StringProperty: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -2932,7 +2932,7 @@ pub const qtextimageformat = struct {
     ///
     /// ``` self: QtC.QTextImageFormat, allocator: std.mem.Allocator ```
     pub fn Name(self: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QTextImageFormat_Name(@ptrCast(self));
+        var _str = qtc.QTextImageFormat_Name(@ptrCast(self));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qtextimageformat.Name: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -3039,7 +3039,7 @@ pub const qtextimageformat = struct {
     ///
     /// ``` self: QtC.QTextImageFormat, allocator: std.mem.Allocator ```
     pub fn FontFamily(self: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QTextCharFormat_FontFamily(@ptrCast(self));
+        var _str = qtc.QTextCharFormat_FontFamily(@ptrCast(self));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qtextimageformat.FontFamily: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -3491,7 +3491,7 @@ pub const qtextimageformat = struct {
     ///
     /// ``` self: QtC.QTextImageFormat, allocator: std.mem.Allocator ```
     pub fn ToolTip(self: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QTextCharFormat_ToolTip(@ptrCast(self));
+        var _str = qtc.QTextCharFormat_ToolTip(@ptrCast(self));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qtextimageformat.ToolTip: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -3589,7 +3589,7 @@ pub const qtextimageformat = struct {
     ///
     /// ``` self: QtC.QTextImageFormat, allocator: std.mem.Allocator ```
     pub fn AnchorHref(self: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QTextCharFormat_AnchorHref(@ptrCast(self));
+        var _str = qtc.QTextCharFormat_AnchorHref(@ptrCast(self));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qtextimageformat.AnchorHref: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -3827,7 +3827,7 @@ pub const qtextimageformat = struct {
     ///
     /// ``` self: QtC.QTextImageFormat, propertyId: i32, allocator: std.mem.Allocator ```
     pub fn StringProperty(self: ?*anyopaque, propertyId: i32, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QTextFormat_StringProperty(@ptrCast(self), @intCast(propertyId));
+        var _str = qtc.QTextFormat_StringProperty(@ptrCast(self), @intCast(propertyId));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qtextimageformat.StringProperty: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -4534,7 +4534,7 @@ pub const qtextframeformat = struct {
     ///
     /// ``` self: QtC.QTextFrameFormat, propertyId: i32, allocator: std.mem.Allocator ```
     pub fn StringProperty(self: ?*anyopaque, propertyId: i32, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QTextFormat_StringProperty(@ptrCast(self), @intCast(propertyId));
+        var _str = qtc.QTextFormat_StringProperty(@ptrCast(self), @intCast(propertyId));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qtextframeformat.StringProperty: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -5413,7 +5413,7 @@ pub const qtexttableformat = struct {
     ///
     /// ``` self: QtC.QTextTableFormat, propertyId: i32, allocator: std.mem.Allocator ```
     pub fn StringProperty(self: ?*anyopaque, propertyId: i32, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QTextFormat_StringProperty(@ptrCast(self), @intCast(propertyId));
+        var _str = qtc.QTextFormat_StringProperty(@ptrCast(self), @intCast(propertyId));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qtexttableformat.StringProperty: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -6083,7 +6083,7 @@ pub const qtexttablecellformat = struct {
     ///
     /// ``` self: QtC.QTextTableCellFormat, allocator: std.mem.Allocator ```
     pub fn FontFamily(self: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QTextCharFormat_FontFamily(@ptrCast(self));
+        var _str = qtc.QTextCharFormat_FontFamily(@ptrCast(self));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qtexttablecellformat.FontFamily: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -6535,7 +6535,7 @@ pub const qtexttablecellformat = struct {
     ///
     /// ``` self: QtC.QTextTableCellFormat, allocator: std.mem.Allocator ```
     pub fn ToolTip(self: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QTextCharFormat_ToolTip(@ptrCast(self));
+        var _str = qtc.QTextCharFormat_ToolTip(@ptrCast(self));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qtexttablecellformat.ToolTip: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -6633,7 +6633,7 @@ pub const qtexttablecellformat = struct {
     ///
     /// ``` self: QtC.QTextTableCellFormat, allocator: std.mem.Allocator ```
     pub fn AnchorHref(self: ?*anyopaque, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QTextCharFormat_AnchorHref(@ptrCast(self));
+        var _str = qtc.QTextCharFormat_AnchorHref(@ptrCast(self));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qtexttablecellformat.AnchorHref: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
@@ -6871,7 +6871,7 @@ pub const qtexttablecellformat = struct {
     ///
     /// ``` self: QtC.QTextTableCellFormat, propertyId: i32, allocator: std.mem.Allocator ```
     pub fn StringProperty(self: ?*anyopaque, propertyId: i32, allocator: std.mem.Allocator) []const u8 {
-        const _str = qtc.QTextFormat_StringProperty(@ptrCast(self), @intCast(propertyId));
+        var _str = qtc.QTextFormat_StringProperty(@ptrCast(self), @intCast(propertyId));
         defer qtc.libqt_string_free(&_str);
         const _ret = allocator.alloc(u8, _str.len) catch @panic("qtexttablecellformat.StringProperty: Memory allocation failed");
         @memcpy(_ret, _str.data[0.._str.len]);
