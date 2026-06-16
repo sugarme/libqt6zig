@@ -1,4 +1,8 @@
 
+### 6.8.2 rev42 (17 June 2026)
+
+* Enable the **Qt PDF** module: `QPdfDocument` + `QPdfDocumentRenderOptions` (read a PDF, page count, render a page to a `QImage`). build.zig links `QtPdf`; the bindings are activated in `src/pdf`, `include/pdf`, the `libqt6c.h` C aggregator, and re-exported from `libqt6.zig`. Tagged `v0.8` (the prior, pre-PDF state is `v0.7`).
+
 ### 6.8.2 rev41 (2 May 2026)
 
 * Restore full bindings on top of the Zig 0.16 minimal base (Core, GUI, Widgets, Multimedia, Network, OpenGL, PrintSupport, SpatialAudio, SQL, SVG, WebChannel, XML, Charts)

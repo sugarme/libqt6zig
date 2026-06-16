@@ -261,8 +261,8 @@ const qt_modules = &.{
     "QtOpenGL",
     "QtOpenGLWidgets",
 
-    // // Qt 6 PDF
-    // "QtPdf",
+    // Qt 6 PDF
+    "QtPdf",
     // "QtPdfWidgets",
 
     // Qt 6 Print Support
