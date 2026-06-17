@@ -7,24 +7,33 @@ const std = @import("std");
 
 /// https://doc.qt.io/qt-6/qapplication.html
 pub const qapplication = struct {
+    /// QApplication keeps the `int &argc` it is constructed with by reference
+    /// (`QCoreApplicationPrivate` stores `int *argc`) and dereferences it for the
+    /// lifetime of the app (e.g. `QCoreApplication::arguments()`, called by the xcb
+    /// platform plugin's `wmClass()` during `QWidget::show()`). A function-local
+    /// `argc` would dangle once the constructor returns and crash later. Hold it in
+    /// process-static storage so the reference stays valid. There is only ever one
+    /// QApplication, so a single static is sufficient.
+    var argc_storage: c_int = 0;
+
     /// New constructs a new QApplication object.
     ///
     /// ``` argc: usize, argv: [*][*:0]u8 ```
     pub fn New(argc: usize, argv: [*][*:0]u8) QtC.QApplication {
-        var argc_param: c_int = @intCast(argc);
+        argc_storage = @intCast(argc);
         const argv_param: [*c][*c]u8 = @ptrCast(@alignCast(&argv[0]));
 
-        return qtc.QApplication_new(&argc_param, argv_param);
+        return qtc.QApplication_new(&argc_storage, argv_param);
     }
 
     /// New2 constructs a new QApplication object.
     ///
     /// ``` argc: usize, argv: [*][*:0]u8, param3: i32 ```
     pub fn New2(argc: usize, argv: [*][*:0]u8, param3: i32) QtC.QApplication {
-        var argc_param: c_int = @intCast(argc);
+        argc_storage = @intCast(argc);
         const argv_param: [*c][*c]u8 = @ptrCast(@alignCast(&argv[0]));
 
-        return qtc.QApplication_new2(&argc_param, argv_param, @intCast(param3));
+        return qtc.QApplication_new2(&argc_storage, argv_param, @intCast(param3));
     }
 
     /// [Qt documentation](https://doc.qt.io/qt-6/qobject.html#metaObject)
