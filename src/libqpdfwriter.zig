@@ -10,6 +10,12 @@ const std = @import("std");
 
 /// https://doc.qt.io/qt-6/qpdfwriter.html
 pub const qpdfwriter = struct {
+    /// Upcast to the QPagedPaintDevice base (correct C++ pointer adjustment for
+    /// multiple inheritance) — needed to pass a QPdfWriter where a QPagedPaintDevice
+    /// is expected, e.g. QTextDocument.Print.
+    pub fn AsPagedPaintDevice(self: ?*anyopaque) ?*anyopaque {
+        return @ptrCast(qtc.QPdfWriter_AsPagedPaintDevice(@ptrCast(self)));
+    }
     /// New constructs a new QPdfWriter object.
     ///
     /// ``` filename: []const u8 ```

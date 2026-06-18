@@ -136,6 +136,7 @@ bool QPdfWriter_QBaseIsSignalConnected(const QPdfWriter* self, const QMetaMethod
 double QPdfWriter_GetDecodedMetricF(const QPdfWriter* self, int metricA, int metricB);
 void QPdfWriter_OnGetDecodedMetricF(const QPdfWriter* self, intptr_t slot);
 double QPdfWriter_QBaseGetDecodedMetricF(const QPdfWriter* self, int metricA, int metricB);
+QPagedPaintDevice* QPdfWriter_AsPagedPaintDevice(QPdfWriter* self);
 void QPdfWriter_Delete(QPdfWriter* self);
 
 #ifdef __cplusplus

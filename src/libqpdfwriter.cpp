@@ -899,6 +899,10 @@ void QPdfWriter_OnGetDecodedMetricF(const QPdfWriter* self, intptr_t slot) {
     }
 }
 
+QPagedPaintDevice* QPdfWriter_AsPagedPaintDevice(QPdfWriter* self) {
+    return self; // implicit C++ upcast adjusts the pointer to the QPagedPaintDevice subobject
+}
+
 void QPdfWriter_Delete(QPdfWriter* self) {
     delete self;
 }
